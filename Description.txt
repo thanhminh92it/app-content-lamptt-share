@@ -1,0 +1,13 @@
+﻿"f1": Dung lượng
+"f2": Số trang
+"f3": Số file
+"f4": Số tài liệu văn bản
+"f5": Số tài liệu t2
+"f6": Số tài liệu t3
+"f7": Số tài liệu t4
+"mat2": Số tài liệu mật
+"mat3": Số tài liệu tuyệt mật
+"mat4": Số tài liệu tối mật
+"fo1": Số lượng phông
+"fo2": Số lượng hộp số
+"fo3": Hồ sơ
