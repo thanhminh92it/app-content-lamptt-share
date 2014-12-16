@@ -17,7 +17,7 @@
       <!-- Search -->
       <component>
          <region-id>search</region-id>
-         <url>/components/searchQuangBinh/searchQBMau5</url>
+         <url>/components/searchQuangBinh/searchQBMau9</url>
       </component>
 
    </components>

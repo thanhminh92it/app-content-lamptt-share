@@ -83,7 +83,7 @@
 	            <div class="col-lg-4 col-md-6">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <p><b>Mẫu 5 - Tất cả các phòng</b></p>
+	                        <p><b>Mẫu 5 - Tất cả các phông</b></p>
 	                        <p>BC Thống kê tài liệu mật</p>
 	                    </div>
 	                    <a href="/share/page/reportQB-Mau5" target="_blank">
@@ -98,7 +98,7 @@
 	            <div class="col-lg-4 col-md-6">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <p><b>Mẫu 6 - Từng phòng</b></p>
+	                        <p><b>Mẫu 6 - Từng phông</b></p>
 	                        <p>BC Thống kê tài liệu mật</p>
 	                    </div>
 	                    <a href="/share/page/reportQB-Mau6" target="_blank">
@@ -113,7 +113,7 @@
 	            <div class="col-lg-4 col-md-6">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <p><b>Mẫu 7 - Từng phòng</b></p>
+	                        <p><b>Mẫu 7 - Từng phông</b></p>
 	                        <p>BC Thống kê tài liệu mật đến hạn giải mật</p>
 	                    </div>
 	                    <a href="/share/page/reportQB-Mau7" target="_blank">
@@ -128,7 +128,7 @@
 	            <div class="col-lg-4 col-md-6">
 	                <div class="panel panel-default">
 	                    <div class="panel-heading">
-	                        <p><b>Mẫu 8 - Từng phòng</b></p>
+	                        <p><b>Mẫu 8 - Từng phông</b></p>
 	                        <p>Mục lục hồ sơ</p>
 	                    </div>
 	                    <a href="/share/page/reportQB-Mau8" target="_blank">
