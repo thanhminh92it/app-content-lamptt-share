@@ -128,10 +128,10 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
                     "</table>" +
                     "<br/>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng phông:<o:p></o:p></span></p>" + data.companyhome.fo1 +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số mét giá tài liệu (8 hộp = 1 mét): ……..<o:p></o:p></span></p>" + data.companyhome.fo2/8 +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hộp: ……..<o:p></o:p></span></p>" + data.companyhome.fo2 +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hồ sơ: ………<o:p></o:p></span></p>" + data.companyhome.fo3 +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng phông:  " + data.companyhome.fo1 + "<o:p></o:p></span></p>"  +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số mét giá tài liệu (8 hộp = 1 mét): " + data.companyhome.fo2/8 + "<o:p></o:p></span></p>"  +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hộp: " + data.companyhome.fo2 + "<o:p></o:p></span></p>"  +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hồ sơ: "  + data.companyhome.fo3 + "<o:p></o:p></span></p>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Cụ thể:<o:p></o:p></span></p>" +
                     content +
                     "<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;text-indent:1.0cm'><span style='mso-bidi-font-size:13.0pt;font-weight:normal;font-size:14pt'>Tổ Số hóa tài liệu lưu trữ kính báo cáo./.</span></p>" +
