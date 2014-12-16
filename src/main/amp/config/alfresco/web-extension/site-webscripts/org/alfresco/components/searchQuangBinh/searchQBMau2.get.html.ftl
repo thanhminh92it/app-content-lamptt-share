@@ -22,12 +22,12 @@
 		<div class="container">
 		    <div class="row">
 		        <h4 class="text-center">BÁO CÁO</h4>
-		        <h4 class="text-center">Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ ..[input]..</h4>
+		        <h4 class="text-center">Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ</h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
 		    </div>
 		    <div class="row">
 		        <div class="panel-body">
-		            <p>Tên phông:..[input]..</p>
+		            <p>Tên phông:</p>
 		            <p>Số lượng mét giá:....</p>
 		            <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
 		            <p>Tổng số trang văn bản hư hỏng, xuống cấp:....</p>
