@@ -78,9 +78,5 @@
 
    </@>
 </@>
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
-    </script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/1.js"></script>
