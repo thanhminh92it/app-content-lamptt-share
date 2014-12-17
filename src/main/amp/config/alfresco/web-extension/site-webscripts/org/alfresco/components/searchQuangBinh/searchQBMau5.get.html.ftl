@@ -44,24 +44,38 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                        <tr>
-	                            <td class="col-md-1 text-center">STT</td>
-	                            <td class="col-md-4">Tên phông</td>
-	                            <td class="col-md-1 text-center">Số mét giá</td>
-	                            <td class="col-md-1 text-center">Số hồ sơ</td>
-	                            <td class="col-md-1 text-center">Mật</td>
-	                            <td class="col-md-1 text-center">Tối mật</td>
-	                            <td class="col-md-1 text-center">Tuyệt mật</td>
-	                            <td class="col-md-2 text-center">Ghi chú</td>
-	                        </tr>
+	                        <#assign x = 0>
+	                        <#assign tongMetGia = 0>
+	                        <#assign tongHoSo = 0>
+	                        <#assign tongHoSoMat = 0>
+	                        <#assign tongHoSoToiMat = 0>
+	                        <#assign tongHoSoTuyetMat = 0>
+                            <#list data.items as child>
+                                <#assign x=x+1>
+                                <#assign tongMetGia = tongMetGia + child.fo2/8 >
+                                <#assign tongHoSo = tongHoSo + child.fo3 >
+                                <#assign tongHoSoMat = tongHoSoMat + child.mat2>
+                                <#assign tongHoSoToiMat = tongHoSoToiMat + child.mat3>
+                                <#assign tongHoSoTuyetMat = tongHoSoTuyetMat + child.mat4>
+                                <tr>
+                                    <td class="col-md-1 text-center">${x}</td>
+                                    <td class="col-md-4">${child.name}</td>
+                                    <td class="col-md-1 text-center">${child.fo2/8}</td>
+                                    <td class="col-md-1 text-center">${child.fo3}</td>
+                                    <td class="col-md-1 text-center">${child.mat2}</td>
+                                    <td class="col-md-1 text-center">${child.mat3}</td>
+                                    <td class="col-md-1 text-center">${child.mat4}</td>
+                                    <td class="col-md-2 text-center">${child.description}</td>
+                                </tr>
+                            </#list>
 	                        <tr>
 	                            <th class="col-md-5 text-center" colspan="2">Tổng cộng</th>
-	                            <th class="col-md-1 text-center">Số mét giá</th>
-	                            <th class="col-md-1 text-center">Số hồ sơ</th>
-	                            <th class="col-md-1 text-center">Mật</th>
-	                            <th class="col-md-1 text-center">Tối mật</th>
-	                            <th class="col-md-1 text-center">Tuyệt mật</th>
-	                            <th class="col-md-2 text-center">Ghi chú</th>
+	                            <th class="col-md-1 text-center">${tongMetGia}</th>
+	                            <th class="col-md-1 text-center">${tongHoSo}</th>
+	                            <th class="col-md-1 text-center">${tongHoSoMat}</th>
+	                            <th class="col-md-1 text-center">${tongHoSoToiMat}</th>
+	                            <th class="col-md-1 text-center">${tongHoSoTuyetMat}</th>
+	                            <th class="col-md-2 text-center"></th>
 	
 	                        </tr>
 	                    </tbody>
@@ -76,4 +90,4 @@
       </div>
    </@>
 </@>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/actionreport.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/5.js"></script>
