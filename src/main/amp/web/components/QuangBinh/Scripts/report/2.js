@@ -1,8 +1,9 @@
 function displayFont(){
+    $( ".metgia" ).html("");
+    window.data =null;
     var singleValues = $( "#SelectFont1").val() ;
-
     $( ".fontName1" ).html( singleValues );
-    displayData( singleValues )
+    displayData( singleValues );
 }
 
 $( "#SelectFont1" ).change( displayFont );
@@ -12,20 +13,19 @@ function displayData(phong){
     var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/2?name=" + phong  );
     $.get(url, function(data){
         var metgia ="";
-        if(data.items[0].fo2 != undefined)
-            metgia = data.items[0].fo2
+        if(data.items != undefined)
+            metgia = data.items[0].fo2/8;
         $( ".metgia" ).html(metgia);
-});
+        window.data = data;
+    });
 }
 
 $(".word-export").click(function (event) {
     var getIDName = $(this).attr('id');
-
-    var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/1");
-    $.get(url, function(data){
-        $("#page-content").wordExport( "TenFileBC" + getIDName, getIDName, data);
-    })
+    var  data1 = window.data;
+    $("#page-content").wordExport( "TenFileBC" + getIDName, getIDName, data1);
 });
+
 
 if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
     (function ($) {
@@ -101,7 +101,12 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var stylesheet = "border:solid black 1.0pt;border-left:none;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt'>";
             var stylesheet1 = "<p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span style='font-size:13.0pt'>";
             var content = "";
-
+            var metgia="", tenphong="";
+            if(data != null)
+            {
+                metgia = data.items[0].fo2/8;
+                tenphong = data.items[0].name;
+            }
             booksToRead = "<table style='width: 100%'>" +
             "<tr><td style='width: 40%; text-align: center;'><b>SỞ NỘI VỤ TỈNH QUẢNG BÌNH</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></td></tr>" +
             "<tr><td style='width: 40%; text-align: center;'><b>CHI CỤC VĂN THƯ - LƯU TRỮ</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>Độc lập - Tự do - Hạnh phúc</b></td></tr>" +
@@ -118,8 +123,8 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
             "</table>" +
             "<br/>" +
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tên phông: <dữ liệu đưa vào><o:p></o:p></span></p>" +
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng mét giá: …….<o:p></o:p></span></p>" +
+            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tên phông: " + tenphong + "<o:p></o:p></span></p>" +
+            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng mét giá: " + metgia + "<o:p></o:p></span></p>" +
             "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng văn bản hư hỏng, xuống cấp: …….<o:p></o:p></span></p>" +
             "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số trang văn bản hư hỏng, xuống cấp: ………. <o:p></o:p></span></p>" +
             "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Danh mục tài liệu hư hỏng, xuống cấp:<o:p></o:p></span></p>" +
@@ -145,14 +150,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             "<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;text-indent:1.0cm'><span style='mso-bidi-font-size:13.0pt;font-weight:normal;font-size:14pt'>Tổ Số hóa tài liệu lưu trữ kính báo cáo./.</span></p>" +
             "<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='width:100%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>" +
             "<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:88.85pt'><td valign=top style='width:40%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><b>NGƯỜI LẬP</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><o:p>&nbsp;</o:p></span></p></td><td valign=top style='width:60%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri'><b>CHI CỤC TRƯỞNG</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri'><o:p>&nbsp;</o:p></span></p></td></tr><tr><td></td><td></td></tr>" +
-            "</table>"+
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt'><b><i>Ghi chú (phần này không đưa vào báo cáo):</i></b></span></p>" +
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Mẫu báo cáo này dùng để thống kê tài liệu hư hỏng, xuống cấp của một phông tài liệu cụ thể nào đó. Tài liệu được xác định là hư hỏng, xuống cấp được căn cứ thuộc tính Tình trạng vật lý của văn bản. Nếu văn bản mới trường này để trống.</i></span></p>" +
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Đầu vào: Tên Phông lưu trữ. Tên Phông lưu trữ được chọn từ 1 danh sách có sẵn. Người dùng chỉ chọn, không cho phép nhập vào từ bàn phím.</i></span></p>" +
-            "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Đầu ra: Báo cáo Thống kê tài liệu xuống cấp</i></span></p>";
-
-
-
+            "</table>";
 
 
             // Aggregate parts of the file together
