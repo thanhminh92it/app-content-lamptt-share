@@ -38,7 +38,7 @@
                         </SELECT>
 					</p>
 		            <p>Số lượng mét giá: ${data.companyhome.fo2/8}</p>
-		            <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
+                    <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
 		            <p>Tổng số trang văn bản hư hỏng, xuống cấp:....</p>
 		        </div>
 		    </div>
