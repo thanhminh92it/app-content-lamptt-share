@@ -38,34 +38,49 @@
 	        <#else>
 	            <div class="row">
                 	            <div class="table-responsive">
-                	                <table class="table table-bordered">
-                	                    <thead>
-                	                        <tr>
-                	                            <th class="col-md-1 text-center">STT</th>
-                	                            <th class="col-md-3 text-center" >Tên phông/ sưu tập lưu trữ</th>
-                	                            <th class="col-md-1 text-center">Số mét giá</th>
-                	                            <th class="col-md-1 text-center">Số hộp</th>
-                	                            <th class="col-md-1 text-center">Số hồ sơ</th>
-                	                            <th class="col-md-3 text-center">Kho lưu trữ</th>
-                	                            <th class="col-md-2 text-center">Ghi chú</th>
-                	                        </tr>
-                	                    </thead>
-                	                    <tbody>
-                	                    <#assign x = 0>
-                                        <#list data.items as child>
-                                            <#assign x=x+1>
-                                            <tr>
-                                                <td class="col-md-1 text-center">${x}</td>
-                                                <td class="col-md-3">${child.name}</td>
-                                                <td class="col-md-1 text-center">${child.fo2/8}</td>
-                                                <td class="col-md-1 text-center">${child.fo2}</td>
-                                                <td class="col-md-1 text-center">${child.fo3}</td>
-                                                <td class="col-md-3">${child.path}</td>
-                                                <td class="col-md-2">${child.description}</td>
-                                            </tr>
-                                        </#list>
-                	                    </tbody>
-                	                </table>
+                	                <br/><br/>
+                	                <div class="row">
+                                            <div class="col-lg-12">
+
+                                            <!-- /.panel-heading -->
+                                            <div class="panel-body">
+                                            <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover " id="dataTables-example" style="margin-top:20px">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="col-md-1 text-center">STT</th>
+                                                        <th class="col-md-3 text-center" >Tên phông/ sưu tập lưu trữ</th>
+                                                        <th class="col-md-1 text-center">Số mét giá</th>
+                                                        <th class="col-md-1 text-center">Số hộp</th>
+                                                        <th class="col-md-1 text-center">Số hồ sơ</th>
+                                                        <th class="col-md-3 text-center">Kho lưu trữ</th>
+                                                        <th class="col-md-2 text-center">Ghi chú</th>
+                                                    </tr>
+                                                </thead>
+                                            <tbody>
+                                            <#assign x = 0>
+                                            <#list data.items as child>
+                                                <#assign x=x+1>
+                                                <tr>
+                                                    <td class="col-md-1 text-center">${x}</td>
+                                                    <td class="col-md-3">${child.name}</td>
+                                                    <td class="col-md-1 text-center">${child.fo2/8}</td>
+                                                    <td class="col-md-1 text-center">${child.fo2}</td>
+                                                    <td class="col-md-1 text-center">${child.fo3}</td>
+                                                    <td class="col-md-3">${child.path}</td>
+                                                    <td class="col-md-2">${child.description}</td>
+                                                </tr>
+                                            </#list>
+                                            </tbody>
+                                            </table>
+                                            </div>
+                                            <!-- /.table-responsive -->
+
+                                            </div>
+                                            <!-- /.panel-body -->
+                                            </div>
+                                            <!-- /.panel -->
+                                            </div>
                 	            </div>
                 	        </div>
 	        </#if>
@@ -78,5 +93,12 @@
 
    </@>
 </@>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/1.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
