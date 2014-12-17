@@ -22,22 +22,13 @@
 		<div class="container">
 		    <div class="row">
 		        <h4 class="text-center">BÁO CÁO</h4>
-		        <h4 class="text-center">Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ <p class="fontName1"></p></h4>
+		        <h4 class="text-center">Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ</h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
 		    </div>
 		    <div class="row">
 		        <div class="panel-body">
-		            <p>Tên phông:
-						<SELECT style="width: 20%; height: 25px" id="SelectFont1">
-                            <option value="" selected>- Lựa chọn phông -</option>
-						<#assign x = 0>
-						<#list data.items as child>
-							<#assign x=x+1>
-                        		<option value="${child.name}">${child.name}</option>
-						</#list>
-                        </SELECT>
-					</p>
-		            <p>Số lượng mét giá: ${data.companyhome.fo2/8}</p>
+		            <p>Tên phông:</p>
+		            <p>Số lượng mét giá:....</p>
 		            <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
 		            <p>Tổng số trang văn bản hư hỏng, xuống cấp:....</p>
 		        </div>
@@ -85,4 +76,3 @@
    </@>
 </@>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/actionreport.js"></script>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/minhnt-JS.js"></script>
