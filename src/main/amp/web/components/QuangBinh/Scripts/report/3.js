@@ -1,7 +1,6 @@
-/**
- * Created by MinhSatThu on 12/17/2014.
- */
-$(function() {
-    $( "#datepicker-start" ).datepicker();
-    $( "#datepicker-end" ).datepicker();
+$("input").change(function () {
+    var from = document.getElementById("datepicker-start").value,
+        to = document.getElementById("datepicker-end").value;
+    document.getElementById("start").value=from;
+    document.getElementById("end").value=to;
 });
