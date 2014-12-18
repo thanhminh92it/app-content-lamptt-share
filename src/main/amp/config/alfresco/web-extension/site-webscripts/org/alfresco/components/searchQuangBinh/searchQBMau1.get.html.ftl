@@ -34,7 +34,7 @@
 
                     <p>Tổng số hộp:&nbsp;&nbsp;${data.companyhome.fo2}</p>
 
-                    <p>Tổng số hồ sơ:&nbsp;&nbsp;${data.companyhome.f3}</p>
+                    <p>Tổng số hồ sơ:&nbsp;&nbsp;${data.companyhome.fo3}</p>
                 </div>
             </div>
             <#if count == 0>
@@ -97,6 +97,8 @@
 <script>
     $(document).ready(function () {
         $('#dataTables-example').dataTable();
+        $("#dataTables-example_filter").css("float","right");
+        $("#dataTables-example_paginate").css("float","right");
     });
 </script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
