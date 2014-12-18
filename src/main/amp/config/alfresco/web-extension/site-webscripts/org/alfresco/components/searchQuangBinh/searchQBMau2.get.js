@@ -3,7 +3,7 @@
  */
 
 function main() {
-    var result = remote.connect("alfresco").get("/zalu/report/1");
+    var result = remote.connect("alfresco").get("/zalu/report/2");
     if (result.status == 200) {
         var data = eval('(' + result + ')');
         model.data = data;

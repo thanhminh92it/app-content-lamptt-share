@@ -31,14 +31,14 @@
 						<SELECT style="width: 20%; height: 25px" id="SelectFont1">
                             <option value="" selected>- Lựa chọn phông -</option>
 						<#assign x = 0>
-						<#list data.items as child>
+						<#list data.AllItems as child>
 							<#assign x=x+1>
                         		<option value="${child.name}">${child.name}</option>
 						</#list>
                         </SELECT>
 					</p>
-		            <p>Số lượng mét giá: ${data.companyhome.fo2/8}</p>
-                    <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
+		            <p>Số lượng mét giá: <span class="metgia"></span></p>
+		            <p>Số lượng văn bản hư hỏng, xuống cấp:....</p>
 		            <p>Tổng số trang văn bản hư hỏng, xuống cấp:....</p>
 		        </div>
 		    </div>
@@ -84,5 +84,5 @@
       </div>
    </@>
 </@>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/actionreport.js"></script>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/minhnt-JS.js"></script>
+
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/2.js"></script>
