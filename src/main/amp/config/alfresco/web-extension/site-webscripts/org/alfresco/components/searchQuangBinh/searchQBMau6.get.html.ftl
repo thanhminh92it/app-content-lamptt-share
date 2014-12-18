@@ -29,9 +29,9 @@
 		        <div class="panel-body">
 		            <p>Tên phông:..[input]..</p>
 		            <p>Số mét giá:.... mét</p>
-		            <p>Số văm bản có dấu "Mật":.... văn bản</p>
-		            <p>Số văm bản có dấu "Tối mật":.... văn bản</p>
-		            <p>Số văm bản có dấu "Tuyệt mật":.... văn bản</p>
+		            <p>Số văn bản có dấu "Mật":.... văn bản</p>
+		            <p>Số văn bản có dấu "Tối mật":.... văn bản</p>
+		            <p>Số văn bản có dấu "Tuyệt mật":.... văn bản</p>
 		        </div>
 		    </div>
 		    <div class="row">
