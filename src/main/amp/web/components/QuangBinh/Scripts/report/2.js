@@ -101,6 +101,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var stylesheet = "border:solid black 1.0pt;border-left:none;mso-border-left-alt:solid black .5pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt'>";
             var stylesheet1 = "<p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span style='font-size:13.0pt'>";
             var content = "";
+
             var metgia="", tenphong="";
             if(data != null)
             {
@@ -117,7 +118,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>BÁO CÁO</b></p></td></tr>" +
             "</table>" +
             "<table style='width: 100%'>" +
-            "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ <dữ liệu đưa vào></b></p></td></tr>" +
+            "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ: " + tenphong + "</b></p></td></tr>" +
             "</table>" +
             "<table style='width: 100%'>" +
             "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
