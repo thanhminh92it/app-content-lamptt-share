@@ -1,14 +1,17 @@
-$("input").change(function () {
-    var from = document.getElementById("datepicker-start").value,
-        to = document.getElementById("datepicker-end").value;
-    document.getElementById("start").value=from;
-    document.getElementById("end").value=to;
-});
+/*$("input").change(function () {
+ var from = document.getElementById("datepicker-start").value,
+ to = document.getElementById("datepicker-end").value;
+ document.getElementById("start").value=from;
+ document.getElementById("end").value=to;
+ });*/
 $( "#datepicker-start" ).datepicker({
     format: 'dd/mm/yyyy',
     startDate: '-3d'
 });
-$( "#datepicker-end" ).datepicker();
+$( "#datepicker-end" ).datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
 
 $('#datepicker-start').datepicker()
     .on("changeDate", function(e){
@@ -61,19 +64,24 @@ var checkout = $('#datepicker-end').datepicker({
     checkout.hide();
 }).data('datepicker');
 
+
+
 /*Xuat file doc*/
 $(".word-export").click(function (event) {
-    var getIDName = $(this).attr('id');
-
-    var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/1");
+    var from = document.getElementById("datepicker-start").value,
+        to = document.getElementById("datepicker-end").value;
+    var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/3?datefrom="+from+"&dateto="+to);
     $.get(url, function(data){
-        $("#page-content").wordExport( "TenFileBC" + getIDName, getIDName, data);
+        var from = document.getElementById("datepicker-start").value,
+            to = document.getElementById("datepicker-end").value;
+        $("#page-content").wordExport( "Báo cáo 3", "BCTKSoHoaTaiLieu", data, from, to);
     })
 });
 
 if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
     (function ($) {
-        $.fn.wordExport = function(reportname, getID, data) {
+        $.fn.wordExport = function(reportname, getID, data, from, to) {
+
             fileName = typeof fileName !== 'undefined' ? fileName : reportname;
             var static = {
                 mhtml: {
@@ -147,114 +155,6 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var content = "";
             switch (getID){
 
-                case "BCTKTaiLieuChung" :{
-
-                    if(data.items.length == 0){
-                        content = "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Không có tài liệu hiển thị<o:p></o:p></span></p>";
-                    }
-                    else{
-                        var count = 0;
-                        var DataContent = "";
-                        for(i = 0;i<data.items.length;i++){
-                            count ++;
-                            DataContent += "<tr><td><p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'>" + count +"</p></td><td>" + data.items[i].name + "</td><td>" + data.items[i].fo2/8 + "</td><td>" + data.items[i].fo2 + "</td><td>" + data.items[i].fo3 + "</td><td>" + data.items[i].path + "</td><td>" + data.items[i].description + "</td></tr>";
-                        }
-                        content = "<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:.5pt solid black;mso-border-insidev:.5pt solid black;width: 100%'>" +
-                        "<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'><td style='width:10%;border:solid black 1.0pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt'><p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span style='font-size:13.0pt'>TT<o:p></o:p></span></p></td><td style='30%; " + stylesheet + stylesheet1 +
-                        "Tên phông/ sưu tập lưu trữ</span></p></td>" +
-                        "<td style='width:10%; " + stylesheet + stylesheet1 +
-                        "Số mét giá</span></p></td>" +
-                        "<td style='width:10%; " + stylesheet + stylesheet1 +
-                        "Số hộp</span></p></td>" +
-                        "<td style='width:10%; " + stylesheet + stylesheet1 +
-                        "Số hồ sơ</span></p></td>" +
-                        "<td style='width:15%; " + stylesheet + stylesheet1 +
-                        "Kho lưu trữ</span></p></td>" +
-                        "<td style='width:15%; " + stylesheet + stylesheet1 +
-                        "Ghi chú</span></p></td></tr>" +
-                        DataContent +
-                        "</table><br/>";
-                    }
-
-                    booksToRead = "<table style='width: 100%'>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>SỞ NỘI VỤ TỈNH QUẢNG BÌNH</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>CHI CỤC VĂN THƯ - LƯU TRỮ</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>Độc lập - Tự do - Hạnh phúc</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>___________</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>_______________________</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b></b></td><td style='width: 60%; text-align: right; font-style: italic'>Quảng Bình, ngày …  tháng … năm 201…</td></tr>" +
-                    "</table>" + "<br/>" +
-                    "<table style='width: 100%'>" +
-                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>BÁO CÁO</b></p></td></tr>" +
-                    "</table>" +
-                    "<table style='width: 100%'>" +
-                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Thống kê tài liệu đã số hóa</b></p></td></tr>" +
-                    "</table>" +
-                    "<table style='width: 100%'>" +
-                    "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
-                    "</table>" +
-                    "<br/>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng phông:  " + data.companyhome.fo1 + "<o:p></o:p></span></p>"  +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số mét giá tài liệu (8 hộp = 1 mét): " + data.companyhome.fo2/8 + "<o:p></o:p></span></p>"  +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hộp: " + data.companyhome.fo2 + "<o:p></o:p></span></p>"  +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số hồ sơ: "  + data.companyhome.fo3 + "<o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Cụ thể:<o:p></o:p></span></p>" +
-                    content +
-                    "<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;text-indent:1.0cm'><span style='mso-bidi-font-size:13.0pt;font-weight:normal;font-size:14pt'>Tổ Số hóa tài liệu lưu trữ kính báo cáo./.</span></p>" +
-                    "<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='width:100%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>" +
-                    "<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:88.85pt'><td valign=top style='width:60%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><b>NGƯỜI LẬP</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><o:p>&nbsp;</o:p></span></p></td><td valign=top style='width:60%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri'><b>CHI CỤC TRƯỞNG</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri'><o:p>&nbsp;</o:p></span></p></td></tr><tr><td></td><td></td></tr>" +
-                    "</table>";
-                    break;
-                }
-                case "BCTKTaiLieuXuongCap":{
-                    booksToRead = "<table style='width: 100%'>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>SỞ NỘI VỤ TỈNH QUẢNG BÌNH</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>CHI CỤC VĂN THƯ - LƯU TRỮ</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>Độc lập - Tự do - Hạnh phúc</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b>___________</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>_______________________</b></td></tr>" +
-                    "<tr><td style='width: 40%; text-align: center;'><b></b></td><td style='width: 60%; text-align: right; font-style: italic'>Quảng Bình, ngày …  tháng … năm 201…</td></tr>" +
-                    "</table>" + "<br/>" +
-                    "<table style='width: 100%'>" +
-                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>BÁO CÁO</b></p></td></tr>" +
-                    "</table>" +
-                    "<table style='width: 100%'>" +
-                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Thống kê tài liệu hư hỏng, xuống cấp của Phông lưu trữ <dữ liệu đưa vào></b></p></td></tr>" +
-                    "</table>" +
-                    "<table style='width: 100%'>" +
-                    "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
-                    "</table>" +
-                    "<br/>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tên phông: <dữ liệu đưa vào><o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng mét giá: …….<o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Số lượng văn bản hư hỏng, xuống cấp: …….<o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Tổng số trang văn bản hư hỏng, xuống cấp: ………. <o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Danh mục tài liệu hư hỏng, xuống cấp:<o:p></o:p></span></p>" +
-                    "<table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0 style='width:100%;margin-left:5.4pt;border-collapse:collapse;border:none;mso-border-alt:solid black .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;mso-border-insideh:.5pt solid black;mso-border-insidev:.5pt solid black'>" +
-                    "<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'><td style='width:6%;border:solid black 1.0pt;mso-border-alt:solid black .5pt;padding:0cm 5.4pt 0cm 5.4pt'><p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span style='font-size:13.0pt'>STT<o:p></o:p></span></p></td><td style='width: 6%; " + stylesheet + stylesheet1 +
-                    "Hộp số</span></p></td>" +
-                    "<td style='width:6%; " + stylesheet + stylesheet1 +
-                    "Hồ sơ</span></p></td>" +
-                    "<td style='width:10%; " + stylesheet + stylesheet1 +
-                    "Số, ký hiệu văn bản</span></p></td>" +
-                    "<td style='width:15%; " + stylesheet + stylesheet1 +
-                    "Ngày, tháng văn bản</span></p></td>" +
-                    "<td style='width:20%; " + stylesheet + stylesheet1 +
-                    "Tác giả văn bản</span></p></td>" +
-                    "<td style='width:20%; " + stylesheet + stylesheet1 +
-                    "Trích yếu nội dung văn bản</span></p></td>" +
-                    "<td style='width:6%; " + stylesheet + stylesheet1 +
-                    "Tờ số</span></p></td>" +
-                    "<td style='width:6%; " + stylesheet + stylesheet1 +
-                    "Số trang (A4)</span></p></td></tr>" +
-                    "<tr><td><p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'>1</p></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>" +
-                    "</table><br/>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;text-indent:1.0cm'><span style='mso-bidi-font-size:13.0pt;font-weight:normal;font-size:14pt'>Tổ Số hóa tài liệu lưu trữ kính báo cáo./.</span></p>" +
-                    "<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='width:100%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>" +
-                    "<tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:88.85pt'><td valign=top style='width:40%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><b>NGƯỜI LẬP</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri;letter-spacing:-.1pt'><o:p>&nbsp;</o:p></span></p></td><td valign=top style='width:60%;padding:0cm 5.4pt 0cm 5.4pt;height:88.85pt'><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='font-size:13.0pt;mso-bidi-font-size:14.0pt;mso-fareast-font-family:Calibri'><b>CHI CỤC TRƯỞNG</b></span><p class=MsoNormal align=center style='margin-top:6.0pt;text-align:center'><span style='mso-fareast-font-family:Calibri'><o:p>&nbsp;</o:p></span></p></td></tr><tr><td></td><td></td></tr>" +
-                    "</table>"+
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt'><b><i>Ghi chú (phần này không đưa vào báo cáo):</i></b></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Mẫu báo cáo này dùng để thống kê tài liệu hư hỏng, xuống cấp của một phông tài liệu cụ thể nào đó. Tài liệu được xác định là hư hỏng, xuống cấp được căn cứ thuộc tính Tình trạng vật lý của văn bản. Nếu văn bản mới trường này để trống.</i></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Đầu vào: Tên Phông lưu trữ. Tên Phông lưu trữ được chọn từ 1 danh sách có sẵn. Người dùng chỉ chọn, không cho phép nhập vào từ bàn phím.</i></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Đầu ra: Báo cáo Thống kê tài liệu xuống cấp</i></span></p>";
-                    break;
-                }
                 case "BCTKSoHoaTaiLieu" :{
                     booksToRead = "<table style='width: 100%'>" +
                     "<tr><td style='width: 40%; text-align: center;'><b>SỞ NỘI VỤ TỈNH QUẢNG BÌNH</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></td></tr>" +
@@ -269,7 +169,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Kết quả số hóa tài liệu </b></p></td></tr>" +
                     "</table>" +
                     "<table style='width: 100%'>" +
-                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Từ ngày …./…./.….. đến ngày …./.…/…...</b></p></td></tr>" +
+                    "<tr style='width: 100%; text-align: center'><td><p style='font-size: 14pt'><b>Từ ngày "+from+" đến ngày "+to+"</b></p></td></tr>" +
                     "</table>" +
                     "<table style='width: 100%'>" +
                     "<tr><td style='width: 100%; text-align: center;'><b>___________</b></td></tr>" +
@@ -278,12 +178,12 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>1. Thành phần tài liệu đưa ra số hóa</b><o:p></o:p></span></p>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>……………………………………………………………………………..</b><o:p></o:p></span></p>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>2. Thời gian thực hiện:</b><o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Từ ngày …./.…/…... đến ngày …./.…/…...<o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>3. Người thực hiện </b><o:p></o:p></span></p>" +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Từ ngày "+from+" đến ngày "+to+"<o:p></o:p></span></p>" +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>3. Người thực hiện </b><o:p></o:p><p>"+data.UserCurrent+"</p></span></p>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>Thành viên Tổ Số hóa tài liệu lưu trữ <o:p></o:p></span></p>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'><b>4. Kết quả đạt được</b><o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>- Tổng số trang văn bản (trang A4) được scan: …………<o:p></o:p></span></p>" +
-                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>- Tổng số văn bản được nhập dữ liệu: ………………….<o:p></o:p></span></p>" +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>- Tổng số trang văn bản (trang A4) được scan: "+data.SoTrangA4+"<o:p></o:p></span></p>" +
+                    "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-weight:normal;font-size: 14pt'>- Tổng số văn bản được nhập dữ liệu: "+data.SoVanBanNhapLieu+".<o:p></o:p></span></p>" +
                     "<br/>" +
                     "<p class=MsoNormal style='margin-top:6.0pt;margin-right:0cm;margin-bottom:6.0pt;margin-left:0cm;text-indent:1.0cm'><span style='font-size: 14pt;font-weight:normal'>Tổ Số hóa tài liệu lưu trữ kính báo cáo./.</span></p>" +
                     "<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 style='width:100%;border-collapse:collapse;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>" +
@@ -296,10 +196,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     "<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;text-indent:1.0cm'><span style='font-size:12.0pt;mso-bidi-font-size:14.0pt;font-weight:normal'><i>- Đầu ra: Báo cáo thống kê kết quả làm việc (chung)</i></span></p>";
                     break;
                 }
-
             }
-
-
 
             // Aggregate parts of the file together
             var fileContent = static.mhtml.top.replace("_html_",static.mhtml.head.replace("_styles_", styles) + static.mhtml.body.replace("_body_",booksToRead)) + mhtmlBottom;
