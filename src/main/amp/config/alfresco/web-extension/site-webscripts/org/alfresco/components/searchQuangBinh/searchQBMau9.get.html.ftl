@@ -22,6 +22,18 @@
 		<div class="container">
 		    <div class="row">
 		        <h4 class="text-center">MỤC LỤC VĂN BẢN</h4>
+				<h4 class="text-center">Hồ sơ lưu trữ
+					<span>
+						<select name="" id="">
+							<option value="">-Lựa chọn hồ sơ</option>
+							<#if count !=0> <#--kiểm tra data.HoSo co tồn tại hay ko-->
+								<#list data.HoSo as child>
+									<option value="${child.Name}">${child.Name}</option>
+								</#list>
+							</#if>
+						</select>
+					</span>
+                </h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
 		    </div>
 		    <div class="row">
