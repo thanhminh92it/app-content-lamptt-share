@@ -22,12 +22,20 @@
 		<div class="container">
 		    <div class="row">
 		        <h4 class="text-center">MỤC LỤC HỒ SƠ</h4>
-		        <h4 class="text-center">Phông lưu trữ ..[input]..</h4>
+		        <h4 class="text-center">Phông lưu trữ
+                    <SELECT class="selectFont1">
+                        <option value="" selected>- Lựa chọn phông -</option>
+						<#list data.items as child>
+                            <option value="${child.name}">${child.name}</option>
+						</#list>
+                    </SELECT>
+				</h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
 		    </div>
+
 		    <div class="row">
 		        <div class="table-responsive">
-		            <table class="table table-bordered">
+		            <table  class="table table-striped table-bordered table-hover table1" id="dataTables-example">
 		                <thead>
 		                <tr>
 		                    <th class="col-md-1 text-center">Hộp số</th>
@@ -39,18 +47,12 @@
 		                </tr>
 		                </thead>
 		                <tbody>
-		                <tr>
-		                    <td class="col-md-1 text-center">Hộp số</td>
-		                    <td class="col-md-1 text-center">Hồ sơ số</td>
-		                    <td class="col-md-4 text-center">Tiêu đề hồ sơ</td>
-		                    <td class="col-md-3 text-center">Ngày, tháng bắt đầu và kết thúc</td>
-		                    <td class="col-md-1 text-center">Tờ số</td>
-		                    <td class="col-md-2 text-center">Ghi chú</td>
-		                </tr>
+
 		                </tbody>
 		            </table>
 		        </div>
 		    </div>
+
 		    <div class="row">
 		        <button type="button" title="Quay về kho" class="btn btn-default">Quay trở về kho</button>
 		        <button type="button" title="In báo cáo ra word" class="btn btn-default word-export" id="MucLucHoSo"><span class='glyphicon glyphicon-print'></span></button>
@@ -59,4 +61,16 @@
 	  </div>
    </@>
 </@>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/actionreport.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+        $("#dataTables-example_filter").css("float","right");
+        $("#dataTables-example_paginate").css("float","right");
+    });
+
+</script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/8.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
