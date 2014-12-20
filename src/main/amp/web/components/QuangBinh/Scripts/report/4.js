@@ -1,11 +1,56 @@
-/**
- * Created by Brook on 18/12/2014.
- */
-
-$(function() {
-    $( "#datepicker-start" ).datepicker();
-    $( "#datepicker-end" ).datepicker();
+$( "#datepicker-start" ).datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
 });
+$( "#datepicker-end" ).datepicker({
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+});
+
+$('#datepicker-start').datepicker()
+    .on("changeDate", function(e){
+        var from = document.getElementById("datepicker-start").value;
+    });
+
+$('#datepicker-end').datepicker()
+    .on("changeDate", function(e){
+        var end = document.getElementById("datepicker-end").value;
+        var start = document.getElementById("datepicker-start").value;
+        if(start=="")alert("Bạn chưa nhập ngày bắt đầu")
+        else{
+            var from = document.getElementById("datepicker-start").value,
+                to = document.getElementById("datepicker-end").value;
+            window.date1=from;
+            window.date2=to;
+            displayData( user1, date1, date2 );
+            }
+    });
+
+var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+var checkin = $('#datepicker-start').datepicker({
+    onRender: function(date) {
+        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+}).on('changeDate', function(ev) {
+    if (ev.date.valueOf() > checkout.date.valueOf()) {
+        var newDate = new Date(ev.date)
+        newDate.setDate(newDate.getDate() + 1);
+        checkout.setValue(newDate);
+    }
+    checkin.hide();
+    $('#datepicker-end')[0].focus();
+}).data('datepicker');
+var checkout = $('#datepicker-end').datepicker({
+    onRender: function(date) {
+        return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+    }
+}).on('changeDate', function(ev) {
+    checkout.hide();
+}).data('datepicker');
+
+
+$( ".selectUser1" ).change( displaySoTrang );
 
 var user1="";
 var date1="";
@@ -17,12 +62,7 @@ function displaySoTrang(){
     date1 = $( "#datepicker-start").val() ;
     date2 = $( "#datepicker-end").val() ;
     displayData( user1, date1, date2 );
-
 }
-
-$( ".selectUser1" ).change( displaySoTrang );
-
-
 
 function displayData( user1, date1, date2 ){
     $( ".soTrangScan" ).html("");

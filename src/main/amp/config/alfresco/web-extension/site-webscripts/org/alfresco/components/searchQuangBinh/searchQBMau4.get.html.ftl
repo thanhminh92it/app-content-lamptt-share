@@ -11,6 +11,7 @@
    <#include "../form/form.js.ftl"/>
    <@script src="${url.context}/res/components/QuangBinh/Scripts/jquery-1.11.1.min.js" group="search"></@script>
    <@script src="${url.context}/res/components/QuangBinh/Scripts/FileSaver.js" group="search"></@script>
+	<@script src="${url.context}/res/components/QuangBinh/Scripts/bootstrap-datepicker.js" group="search"></@script>
 </@>
 
 <@markup id="widgets">
@@ -55,4 +56,3 @@
    </@>
 </@>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/4.js"></script>
-<@script src="${url.context}/res/components/QuangBinh/Scripts/bootstrap-datepicker.js" group="search"></@script>
