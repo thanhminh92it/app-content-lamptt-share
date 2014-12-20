@@ -32,6 +32,9 @@ function displayData(name1) {
                     + '</td></tr>');
                 }
             }
+            else{
+
+            }
         }
 
     });
