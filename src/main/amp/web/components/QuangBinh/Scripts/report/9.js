@@ -12,6 +12,7 @@ function Showdata(name){
     $.get(url, function(data){
         var dem=0;
         if(data.Items.length>0) {
+            $('.minhlv').append('<tbody>');
             for (var item in data.Items) {
                 dem++;
                 $(".minhlv").append('<tr>' +
@@ -23,7 +24,7 @@ function Showdata(name){
                 '<td class="col-md-1 text-center" id="TS">' + data.Items[item].SoTrang + '</td>' +
                 '<td class="col-md-2 text-center" id="DC">' + data.Items[item].GhiChu + '</td>' +
                 '</tr>');
-            }
+            }$('.minhlv').append('</tbody>');
         }
         else{
             $(".minhlv").empty();
@@ -117,16 +118,22 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             var stylesheet1 = "<p class=MsoNormal align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'><span style='font-size:13.0pt'>";
             var content = "";
             var dem=0;
-            for(var i=0;i<data.Items.length;i++){
-                content+= "<tr>" +
-                "<td><p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'>"+ dem++ +"</p>" + "</td>" +
-                "<td>"+data.Items[i].SoKyHieuVanBan+"</td>" +
-                "<td>"+data.Items[i].NgayThangVanBan+ "</td>" +
-                "<td>"+data.Items[i].TacGia+"</td>" +
-                "<td>"+data.Items[i].TrichYeuNoiDung+"</td>" +
-                "<td>"+data.Items[i].SoTrang+"</td>" +
-                "<td>"+data.Items[i].GhiChu+"</td>" +
-                "</tr>";
+            if (data != undefined) {
+                if (data.Items.length > 0) {
+                    $('.minhlv').append('<tbody>');
+                    for (var i = 0; i < data.Items.length; i++) {
+                        content += "<tr>" +
+                        "<td><p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center'>" + dem++ + "</p>" + "</td>" +
+                        "<td>" + data.Items[i].SoKyHieuVanBan + "</td>" +
+                        "<td>" + data.Items[i].NgayThangVanBan + "</td>" +
+                        "<td>" + data.Items[i].TacGia + "</td>" +
+                        "<td>" + data.Items[i].TrichYeuNoiDung + "</td>" +
+                        "<td>" + data.Items[i].SoTrang + "</td>" +
+                        "<td>" + data.Items[i].GhiChu + "</td>" +
+                        "</tr>";
+                    }
+                    $('.minhlv').append('</tbody>');
+                }
             }
             booksToRead = "<table style='width: 100%'>" +
             "<tr><td style='width: 40%; text-align: center;'><b>SỞ NỘI VỤ TỈNH QUẢNG BÌNH</b></td><td style='width: 60%; text-align: center; font-style: oblique'><b>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</b></td></tr>" +
