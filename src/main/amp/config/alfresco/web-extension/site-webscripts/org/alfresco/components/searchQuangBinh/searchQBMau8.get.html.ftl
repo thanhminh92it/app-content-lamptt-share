@@ -46,9 +46,7 @@
 		                    <th class="col-md-2 text-center">Ghi chú</th>
 		                </tr>
 		                </thead>
-		                <tbody>
 
-		                </tbody>
 		            </table>
 		        </div>
 		    </div>

@@ -20,8 +20,10 @@ function displayData(name1) {
     window.url = url;
     $.get(url, function (data) {
         if (data != undefined) {
-            window.data=data;
+
+    window.data=data;
             if (data.HoSo.length > 0) {
+                $('.table1').append('<tbody>');
                 for (var i = 0; i < data.HoSo.length; i++) {
                     $('.table1').append('<tr class="AddedData1"><td class="col-md-1 text-center">' + data.HoSo[i].HopSo
                     + '</td><td class="col-md-1 text-center">' + data.HoSo[i].HoSo
@@ -31,6 +33,7 @@ function displayData(name1) {
                     + '</td><td class="col-md-2 text-center">' + data.HoSo[i].GhiChu
                     + '</td></tr>');
                 }
+                $('.table1').append('</tbody>');
             }
             else{
 
@@ -43,7 +46,7 @@ function displayData(name1) {
 
 $(".word-export").click(function (event) {
     var getIDName = $(this).attr('id');
-    /*    var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/1");*/
+    var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/1");
     $.get(window.url, function (data) {
         $("#page-content").wordExport("TenFileBC" + getIDName, getIDName, data);
     })
