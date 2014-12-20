@@ -125,9 +125,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                 content = "<tr><td style='padding:5px;'><p style='text-align:center;'>Không có dữ liệu hiển thị</p></td></tr>";
             }
             else {
-                var count = 0;
                     for (i = 0; i < data.HoSo.length; i++) {
-                        count++;
                         content += "<tr>"+
                         "<td style='padding:5px;'><p style='text-align:center; '>" + data.HoSo[i].HopSo + "</p></td>" +
                         "<td style='padding:5px;'><p style='text-align:center; '>" + data.HoSo[i].HoSo + "</p></td>" +

@@ -23,7 +23,7 @@
 		    <div class="row">
 		        <h4 class="text-center">MỤC LỤC HỒ SƠ</h4>
 		        <h4 class="text-center">Phông lưu trữ
-                    <SELECT class="selectFont1">
+                    <SELECT class="selectFont1" style="width:auto;">
                         <option value="" selected>- Lựa chọn phông -</option>
 						<#list data.items as child>
                             <option value="${child.name}">${child.name}</option>

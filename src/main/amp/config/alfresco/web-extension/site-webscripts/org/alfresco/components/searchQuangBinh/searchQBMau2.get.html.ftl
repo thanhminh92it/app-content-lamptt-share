@@ -28,7 +28,7 @@
 		    <div class="row">
 		        <div class="panel-body">
 		            <p>Tên phông:
-						<SELECT style="width: 20%; height: 25px" id="SelectFont1">
+						<SELECT style="width: auto; height: 25px" id="SelectFont1">
                             <option value="" selected>- Lựa chọn phông -</option>
 						<#assign x = 0>
 						<#list data.AllItems as child>

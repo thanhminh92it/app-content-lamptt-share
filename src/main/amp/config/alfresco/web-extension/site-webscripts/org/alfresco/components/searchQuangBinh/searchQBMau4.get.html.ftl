@@ -25,7 +25,7 @@
 		    <div class="row">
 		        <h4 class="text-center">BÁO CÁO</h4>
 		        <h4 class="text-center">Kết quả số hóa tài liệu của ông/bà
-					<SELECT class="selectUser1">
+					<SELECT class="selectUser1" style="width:auto;">
                     <option value="" selected>- Lựa chọn tên cán bộ -</option>
 					<#assign x = 0>
 					<#list data.ListUser as child>
