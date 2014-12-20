@@ -1,7 +1,5 @@
 function TenPhong() {
-
     var TenPhong = $('.SelectPhong').val();
-    $('.table-rows-data').remove();
     displayData(TenPhong);
 }
 
@@ -43,18 +41,62 @@ function displayData(TenPhong) {
         var HoSoToiTuyetMat = 0;
         var tableMatRow = "";
         var tableToiTuyetMatRow = "";
+        var contentMat = "";
+        var contentTTMat = "";
+        var NumberRow1 = 0;
+        var TableData = new Array();
+
+        var datatable = [];
+        var datatable1 = [];
         if (data.TaiLieu.length > 0) {
             for (var i = 0; i < data.TaiLieu.length; i++) {
                 if ((data.TaiLieu[i].DoMat == "2")) {
                     HoSoMat++;
-                    $('.table-Mat').append('<tr class="table-rows-data"><td class="col-md-1 text-center">' + HoSoMat + '</td><td class="col-md-1 text-center">' + data.TaiLieu[i].SoKyHieuVanBan + '</td><td>' + data.TaiLieu[i].NgayThang + '</td><td>' + data.TaiLieu[i].TacGia + '</td><td>' + data.TaiLieu[i].TrichYeuNoiDung + '</td><td>' + data.TaiLieu[i].SoTrang + '</td><td></td></tr>');
+                    datatable.push([HoSoMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,"7"]);
+
+
                 }
                 else if ((data.TaiLieu[i].DoMat == "3") || (data.TaiLieu[i].DoMat == "4")) {
                     HoSoToiTuyetMat++;
-                    $('.table-Toi-Tuyet-Mat').append('<tr class="table-rows-data"><td class="col-md-1 text-center">' + HoSoToiTuyetMat + '</td><td class="col-md-1 text-center">' + data.TaiLieu[i].SoKyHieuVanBan + '</td><td>' + data.TaiLieu[i].NgayThang + '</td><td>' + data.TaiLieu[i].TacGia + '</td><td>' + data.TaiLieu[i].TrichYeuNoiDung + '</td><td>' + data.TaiLieu[i].SoTrang + '</td><td></td></tr>');
+                    datatable1.push([HoSoToiTuyetMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,"7"]);
                 }
             }
+
         }
+        if( $.fn.dataTable.isDataTable( '#table-Mat' ) ){
+            table = $('#table-Mat').dataTable();
+            table.destroy();
+            table = $('#table-Mat').dataTable({
+                paging :false,
+                searching: false,
+                retrieve:true
+            });
+
+        }
+        else{
+            $('#table-Mat').dataTable({
+
+                data: datatable
+
+            });
+        }
+
+        $("#table-Mat_filter").css("float","right");
+        $("#table-Mat_paginate").css("float","right");
+        if( $.fn.dataTable.isDataTable('#table-Toi-Tuyet-Mat')){
+            $('#table-Toi-Tuyet-Mat').dataTable({
+                paging :false,
+                searching: false,
+                retrieve: true
+            });
+        }
+        else{
+            $('#table-Toi-Tuyet-Mat').dataTable({
+                data: datatable1
+            });
+        }
+        $("#table-Toi-Tuyet-Mat_filter").css("float","right");
+        $("#table-Toi-Tuyet-Mat_paginate").css("float","right");
         window.data = data;
 
     });

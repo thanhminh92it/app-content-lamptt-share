@@ -47,7 +47,7 @@
 		    <div class="row">
 		        <p><b>1. Tài liệu văn bản có dấu "Mật"</b></p>
 		        <div class="table-responsive">
-		            <table class="table table-bordered table-Mat">
+		            <table class="table table-bordered table-Mat" id="table-Mat">
 		                <thead>
 		                <tr>
 		                    <th class="col-md-1 text-center">STT</th>
@@ -59,16 +59,16 @@
 		                    <th class="col-md-1 text-center">Số trang (A4)</th>
 		                </tr>
 		                </thead>
-		                <tbody>
+                        <tbody>
 
-		                </tbody>
+                        </tbody>
 		            </table>
 		        </div>
 		    </div>
 		    <div class="row">
 		        <p><b>2. Tài liệu văn bản có dấu "Tối mật", "Tuyệt mật"</b></p>
 		        <div class="table-responsive">
-		            <table class="table table-bordered table-Toi-Tuyet-Mat">
+		            <table class="table table-bordered table-Toi-Tuyet-Mat" id="table-Toi-Tuyet-Mat">
 		                <thead>
 		                <tr>
 		                    <th class="col-md-1 text-center">STT</th>
@@ -94,5 +94,15 @@
       </div>
    </@>
 </@>
+<script>
+    $(document).ready(function () {
 
+
+
+    });
+
+</script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/6.js"></script>
