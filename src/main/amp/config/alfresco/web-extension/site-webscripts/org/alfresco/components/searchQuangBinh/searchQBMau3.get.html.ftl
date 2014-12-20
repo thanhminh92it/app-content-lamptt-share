@@ -38,7 +38,7 @@
                     <p><b>1. Thành phần tài liệu đưa ra số hóa</b></p>
                     <p>...</p>
                     <p><b>2. Thời gian thực hiện</b></p>
-                    <p>Từ ngày <input type="text" id="start" placeholder=".../.../...."/> đến ngày <input type="text" id="end" placeholder=".../.../...."/></p>
+                    <p>Từ ngày <input style="border: none!important;" type="text" id="start" placeholder=".../.../...."/> đến ngày <input style="border: none!important;" type="text" id="end" placeholder=".../.../...."/></p>
                     <p><b>3. Người thực hiện</b></p>
                     <p id="user">...</p>
                     <p><b>4. Kết quả đạt được</b></p>

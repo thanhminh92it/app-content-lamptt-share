@@ -11,19 +11,23 @@ function Showdata(name){
     var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/9?name="+name  );
     $.get(url, function(data){
         var dem=0;
-        for(var item in data.Items){
-            dem++;
-            $(".minhlv").append('<tr>' +
-            '<td class="col-md-1 text-center" id="TT">'+dem+'</td>' +
-            '<td class="col-md-1 text-center" id="KH">'+data.Items[item].SoKyHieuVanBan+'</td>'+
-            '<td class="col-md-1 text-center" id="Ngay">'+data.Items[item].NgayThangVanBan+'</td>'+
-            '<td class="col-md-3 text-center" id="TG">'+data.Items[item].TacGia+'</td>'+
-            '<td class="col-md-3 text-center" id="VB">'+data.Items[item].TrichYeuNoiDung+'</td>'+
-            '<td class="col-md-1 text-center" id="TS">'+data.Items[item].SoTrang+'</td>'+
-            '<td class="col-md-2 text-center" id="DC">'+data.Items[item].GhiChu+'</td>'+
-            '</tr>');
+        if(data.Items.length>0) {
+            for (var item in data.Items) {
+                dem++;
+                $(".minhlv").append('<tr>' +
+                '<td class="col-md-1 text-center" id="TT">' + dem + '</td>' +
+                '<td class="col-md-1 text-center" id="KH">' + data.Items[item].SoKyHieuVanBan + '</td>' +
+                '<td class="col-md-1 text-center" id="Ngay">' + data.Items[item].NgayThangVanBan + '</td>' +
+                '<td class="col-md-3 text-center" id="TG">' + data.Items[item].TacGia + '</td>' +
+                '<td class="col-md-3 text-center" id="VB">' + data.Items[item].TrichYeuNoiDung + '</td>' +
+                '<td class="col-md-1 text-center" id="TS">' + data.Items[item].SoTrang + '</td>' +
+                '<td class="col-md-2 text-center" id="DC">' + data.Items[item].GhiChu + '</td>' +
+                '</tr>');
+            }
         }
-
+        else{
+            $(".minhlv").empty();
+        }
     });
 }
 
