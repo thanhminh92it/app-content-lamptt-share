@@ -103,6 +103,7 @@
 
 </script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/jquery.js"></script>
+<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/6.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
-<script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/6.js"></script>
+

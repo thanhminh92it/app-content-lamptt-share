@@ -6,12 +6,12 @@ function TenPhong() {
 $('.SelectPhong').change(TenPhong);
 
 function displayData(TenPhong) {
+
     $("#TenPhong").html(TenPhong);
     $("#SoMet").html("");
     $("#SoVBMat").html("");
     $("#SoVBToiMat").html("");
     $("#SoVBTuyetMat").html("");
-    window.data = null;
     var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/6?name=" + TenPhong);
     $.get(url, function (data) {
         /*        var soTrangScan ="";
@@ -35,7 +35,6 @@ function displayData(TenPhong) {
             else {
                 $("#SoVBTuyetMat").html("Không có văn bản nào");
             }
-
         }
         var HoSoMat = 0;
         var HoSoToiTuyetMat = 0;
@@ -54,7 +53,6 @@ function displayData(TenPhong) {
                     HoSoMat++;
                     datatable.push([HoSoMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,"7"]);
 
-
                 }
                 else if ((data.TaiLieu[i].DoMat == "3") || (data.TaiLieu[i].DoMat == "4")) {
                     HoSoToiTuyetMat++;
@@ -63,38 +61,35 @@ function displayData(TenPhong) {
             }
 
         }
-        if( $.fn.dataTable.isDataTable( '#table-Mat' ) ){
-            table = $('#table-Mat').dataTable();
-            table.destroy();
-            table = $('#table-Mat').dataTable({
-                paging :false,
-                searching: false,
-                retrieve:true
-            });
+        /*if( $.fn.dataTable.isDataTable( '#table-Mat' ) ){
+         $('#table-Mat').dataTable({
+         paging :false,
+         searching: false,
+         retrieve:true
+         });
+         }
+         else{
+         $('#table-Mat').dataTable({
+         data: datatable
+         });
+         }*/
+        $('#table-Mat').dataTable().fnDestroy();
+        $('#table-Mat thead tr').remove();
+        $('#table-Mat thead').append('<tr><th class="col-md-1 text-center">STT</th><th class="col-md-2 text-center">Số, ký hiệu văn bản</th><th class="col-md-2 text-center">Ngày, tháng văn bản</th><th class="col-md-2 text-center">Tác giả văn bản</th><th class="col-md-3 text-center">Trích yếu nội dung văn bản</th><th class="col-md-1 text-center">Tờ số</th><th class="col-md-1 text-center">Số trang (A4)</th></tr>');
+        $('#table-Mat').dataTable({
 
-        }
-        else{
-            $('#table-Mat').dataTable({
-
-                data: datatable
-
-            });
-        }
-
+            data: datatable,
+            retrieve: datatable
+        });
         $("#table-Mat_filter").css("float","right");
         $("#table-Mat_paginate").css("float","right");
-        if( $.fn.dataTable.isDataTable('#table-Toi-Tuyet-Mat')){
-            $('#table-Toi-Tuyet-Mat').dataTable({
-                paging :false,
-                searching: false,
-                retrieve: true
-            });
-        }
-        else{
-            $('#table-Toi-Tuyet-Mat').dataTable({
-                data: datatable1
-            });
-        }
+        $('#table-Toi-Tuyet-Mat thead tr').remove();
+        $('#table-Toi-Tuyet-Mat thead').append('<tr><th class="col-md-1 text-center">STT</th><th class="col-md-2 text-center">Số, ký hiệu văn bản</th><th class="col-md-2 text-center">Ngày, tháng văn bản</th><th class="col-md-2 text-center">Tác giả văn bản</th><th class="col-md-3 text-center">Trích yếu nội dung văn bản</th><th class="col-md-1 text-center">Tờ số</th><th class="col-md-1 text-center">Số trang (A4)</th></tr>');
+        $('#table-Toi-Tuyet-Mat').dataTable().fnDestroy();
+        $('#table-Toi-Tuyet-Mat').dataTable({
+            data: datatable1,
+            retrieve: datatable1
+        });
         $("#table-Toi-Tuyet-Mat_filter").css("float","right");
         $("#table-Toi-Tuyet-Mat_paginate").css("float","right");
         window.data = data;
