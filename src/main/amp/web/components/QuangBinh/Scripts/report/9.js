@@ -11,23 +11,42 @@ function Showdata(name){
     var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "/zalu/report/9?name="+name  );
     $.get(url, function(data){
         var dem=0;
+        var datatable=[];
         if(data.Items.length>0) {
-            $('.minhlv').append('<tbody>');
+            /*$('.minhlv').append('<tbody>');*/
             for (var item in data.Items) {
                 dem++;
-                $(".minhlv").append('<tr>' +
-                '<td class="col-md-1 text-center" id="TT">' + dem + '</td>' +
-                '<td class="col-md-1 text-center" id="KH">' + data.Items[item].SoKyHieuVanBan + '</td>' +
-                '<td class="col-md-1 text-center" id="Ngay">' + data.Items[item].NgayThangVanBan + '</td>' +
-                '<td class="col-md-3 text-center" id="TG">' + data.Items[item].TacGia + '</td>' +
-                '<td class="col-md-3 text-center" id="VB">' + data.Items[item].TrichYeuNoiDung + '</td>' +
-                '<td class="col-md-1 text-center" id="TS">' + data.Items[item].SoTrang + '</td>' +
-                '<td class="col-md-2 text-center" id="DC">' + data.Items[item].GhiChu + '</td>' +
-                '</tr>');
-            }$('.minhlv').append('</tbody>');
+                datatable.push([dem,data.Items[item].SoKyHieuVanBan,data.Items[item].NgayThangVanBan,data.Items[item].TacGia,data.Items[item].TrichYeuNoiDung,data.Items[item].SoTrang,data.Items[item].GhiChu,"7"]);
+                /* $(".minhlv").append(*//*'<tr>' +
+                 '<td class="col-md-1 text-center" id="TT">' + dem + '</td>' +
+                 '<td class="col-md-1 text-center" id="KH">' + data.Items[item].SoKyHieuVanBan + '</td>' +
+                 '<td class="col-md-1 text-center" id="Ngay">' + data.Items[item].NgayThangVanBan + '</td>' +
+                 '<td class="col-md-3 text-center" id="TG">' + data.Items[item].TacGia + '</td>' +
+                 '<td class="col-md-3 text-center" id="VB">' + data.Items[item].TrichYeuNoiDung + '</td>' +
+                 '<td class="col-md-1 text-center" id="TS">' + data.Items[item].SoTrang + '</td>' +
+                 '<td class="col-md-2 text-center" id="DC">' + data.Items[item].GhiChu + '</td>' +
+                 '</tr>');*/
+            }/*$('.minhlv').append('</tbody>');*/
+        }
+        /* else{
+         $(".minhlv").empty();
+         }*/
+        if( $.fn.dataTable.isDataTable( '#minhlv' ) ){
+            table = $('#minhlv').dataTable();
+            table.destroy();
+            table = $('#minhlv').dataTable({
+                paging :false,
+                searching: false,
+                retrieve:true
+            });
+
         }
         else{
-            $(".minhlv").empty();
+            $('#minhlv').dataTable({
+
+                data: datatable
+
+            });
         }
     });
 }
