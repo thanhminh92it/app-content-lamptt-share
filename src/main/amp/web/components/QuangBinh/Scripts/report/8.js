@@ -19,25 +19,45 @@ function displayData(name1) {
     var url = YAHOO.lang.substitute(Alfresco.constants.PROXY_URI_RELATIVE + "zalu/report/8?name=" + name1);
     window.url = url;
     $.get(url, function (data) {
-        if (data != undefined) {
 
-    window.data=data;
+        if (data != undefined) {
+            window.data=data;
+            var datatable = [];
+
             if (data.HoSo.length > 0) {
-                $('.table1').append('<tbody>');
+
                 for (var i = 0; i < data.HoSo.length; i++) {
-                    $('.table1').append('<tr class="AddedData1"><td class="col-md-1 text-center">' + data.HoSo[i].HopSo
+                    datatable.push([data.HoSo[i].HopSo, data.HoSo[i].HoSo, data.HoSo[i].TieuDeHoSo, data.HoSo[i].BatDauKetThuc, data.HoSo[i].SoTrang, data.HoSo[i].GhiChu]);
+
+/*                    $('.table1').append('<tr class="AddedData1"><td class="col-md-1 text-center">' + data.HoSo[i].HopSo
                     + '</td><td class="col-md-1 text-center">' + data.HoSo[i].HoSo
                     + '</td><td class="col-md-4 text-center">' + data.HoSo[i].TieuDeHoSo
                     + '</td><td class="col-md-3 text-center">' + data.HoSo[i].BatDauKetThuc
                     + '</td><td class="col-md-1 text-center">' + data.HoSo[i].SoTrang
                     + '</td><td class="col-md-2 text-center">' + data.HoSo[i].GhiChu
-                    + '</td></tr>');
+                    + '</td></tr>');*/
                 }
-                $('.table1').append('</tbody>');
+
             }
             else{
 
             }
+
+            $('#dataTables-example').dataTable().fnDestroy();
+            $('#dataTables-example thead tr').remove();
+            $('#dataTables-example thead').append('<tr>' +
+            '<th class="col-md-1 text-center">Hộp số</th>' +
+            '<th class="col-md-1 text-center">Hồ sơ số</th>' +
+            '<th class="col-md-4 text-center">Tiêu đề hồ sơ</th>' +
+            '<th class="col-md-3 text-center">Ngày, tháng bắt đầu và kết thúc</th>' +
+            '<th class="col-md-1 text-center">Tờ số</th>' +
+            '<th class="col-md-2 text-center">Ghi chú</th></tr>');
+            $('#dataTables-example').dataTable({
+                data: datatable,
+                retrieve: datatable
+            });
+            $("#dataTables-example_filter").css("float","right");
+            $("#dataTables-example_paginate").css("float","right");
         }
 
     });

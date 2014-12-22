@@ -35,7 +35,7 @@
 
 		    <div class="row">
 		        <div class="table-responsive">
-		            <table  class="table table-striped table-bordered table-hover table1" id="dataTables-example">
+		            <table  class="table table-striped table-bordered table-hover" id="dataTables-example">
 		                <thead>
 		                <tr>
 		                    <th class="col-md-1 text-center">Hộp số</th>
