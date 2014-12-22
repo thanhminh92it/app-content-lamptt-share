@@ -26,15 +26,26 @@
 
                 <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
             </div>
+            <#if data.companyhome??>
+                <#assign sophong = data.companyhome.fo1>
+                <#assign somet = data.companyhome.fo2/8>
+                <#assign sohop = data.companyhome.fo2>
+                <#assign sohoso = data.companyhome.fo3>
+                <#else>
+                    <#assign sophong = 0>
+                    <#assign somet = 0>
+                    <#assign sohop = 0>
+                    <#assign sohoso = 0>
+            </#if>
             <div class="row">
                 <div class="panel-body">
-                    <p>Số lượng phông:&nbsp;&nbsp;${data.companyhome.fo1}</p>
+                    <p>Số lượng phông:&nbsp;&nbsp;${sophong}</p>
 
-                    <p>Tổng số mét giá tài liệu (8 hộp = 1 mét):&nbsp;&nbsp;${data.companyhome.fo2/8}</p>
+                    <p>Tổng số mét giá tài liệu (8 hộp = 1 mét):&nbsp;&nbsp;${somet}</p>
 
-                    <p>Tổng số hộp:&nbsp;&nbsp;${data.companyhome.fo2}</p>
+                    <p>Tổng số hộp:&nbsp;&nbsp;${sohop}</p>
 
-                    <p>Tổng số hồ sơ:&nbsp;&nbsp;${data.companyhome.fo3}</p>
+                    <p>Tổng số hồ sơ:&nbsp;&nbsp;${sohoso}</p>
                 </div>
             </div>
             <#if count == 0>
