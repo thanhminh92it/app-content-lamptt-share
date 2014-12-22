@@ -30,11 +30,13 @@
 		            <p>Tên phông:
 						<SELECT style="width: auto; height: 25px" id="SelectFont1">
                             <option value="" selected>- Lựa chọn phông -</option>
-						<#assign x = 0>
-						<#list data.AllItems as child>
-							<#assign x=x+1>
-                        		<option value="${child.name}">${child.name}</option>
-						</#list>
+							<#if count != 0>
+							<#assign x = 0>
+								<#list data.AllItems as child>
+									<#assign x=x+1>
+										<option value="${child.name}">${child.name}</option>
+								</#list>
+							</#if>
                         </SELECT>
 					</p>
 		            <p>Số lượng mét giá: <span class="metgia"></span></p>

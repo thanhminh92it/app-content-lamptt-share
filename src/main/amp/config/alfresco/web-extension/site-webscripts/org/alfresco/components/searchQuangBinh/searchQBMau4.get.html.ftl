@@ -28,11 +28,13 @@
 		        <h4 class="text-center">Kết quả số hóa tài liệu của ông/bà
 					<SELECT class="selectUser1" style="width:auto;">
                     <option value="" selected>- Lựa chọn tên cán bộ -</option>
+					<#if count != 0>
 					<#assign x = 0>
-					<#list data.ListUser as child>
-						<#assign x=x+1>
-                        <option value="${child.user}">${child.fullname}</option>
-					</#list>
+						<#list data.ListUser as child>
+							<#assign x=x+1>
+							<option value="${child.user}">${child.fullname}</option>
+						</#list>
+					</#if>
                 	</SELECT>
 				</h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>

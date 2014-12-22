@@ -25,9 +25,11 @@
 		        <h4 class="text-center">Phông lưu trữ
                     <SELECT class="selectFont1" style="width:auto;">
                         <option value="" selected>- Lựa chọn phông -</option>
-						<#list data.items as child>
-                            <option value="${child.name}">${child.name}</option>
-						</#list>
+	   					<#if count != 0>
+							<#list data.items as child>
+								<option value="${child.name}">${child.name}</option>
+							</#list>
+						</#if>
                     </SELECT>
 				</h4>
 		        <p class="text-center">&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;&macr;</p>
