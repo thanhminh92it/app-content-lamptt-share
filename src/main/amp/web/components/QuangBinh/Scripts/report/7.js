@@ -27,21 +27,42 @@ function displayData()
             $(".hoso").html(hoso);
             $(".odd").remove();
             window.dataVanBan = data;
-            for(var item in data.TaiLieu)
-            {
-                if(data.TaiLieu[item].DoMat == "1") {
-                    $(".table-minhpt").append('<tr class="trbody">' +
-                    '<td class="col-md-1 text-center">' + dem++ + '</td>' +
-                    '<td class="col-md-1 text-center">' + data.TaiLieu[item].SoKyHieuVanBan + '</td>' +
-                    '<td class="col-md-2 text-center">' + data.TaiLieu[item].NgayThang + '</td>' +
-                    '<td class="col-md-2">' + data.TaiLieu[item].TacGia + '</td>' +
-                    '<td class="col-md-3">' + data.TaiLieu[item].TrichYeuNoiDung + '</td>' +
-                    '<td class="col-md-1 text-center">' + data.TaiLieu[item].SoTrang + '</td>' +
-                    '<td class="col-md-1 text-center">' + data.TaiLieu[item].DoMat + '</td>' +
-                    '<td class="col-md-1 text-center">' + data.TaiLieu[item].GhiChu + '</td>' +
-                    '</tr>');
+            /*for(var item in data.TaiLieu)
+             {
+             if(data.TaiLieu[item].DoMat == "1") {
+             $(".table-minhpt").append('<tr class="trbody">' +
+             '<td class="col-md-1 text-center">' + dem++ + '</td>' +
+             '<td class="col-md-1 text-center">' + data.TaiLieu[item].SoKyHieuVanBan + '</td>' +
+             '<td class="col-md-2 text-center">' + data.TaiLieu[item].NgayThang + '</td>' +
+             '<td class="col-md-2">' + data.TaiLieu[item].TacGia + '</td>' +
+             '<td class="col-md-3">' + data.TaiLieu[item].TrichYeuNoiDung + '</td>' +
+             '<td class="col-md-1 text-center">' + data.TaiLieu[item].SoTrang + '</td>' +
+             '<td class="col-md-1 text-center">' + data.TaiLieu[item].DoMat + '</td>' +
+             '<td class="col-md-1 text-center">' + data.TaiLieu[item].GhiChu + '</td>' +
+             '</tr>');
+             }
+             }*/
+            var datatable = [];
+            var HoSoMat = 0;
+            if (data.TaiLieu.length > 0) {
+                for (var i = 0; i < data.TaiLieu.length; i++) {
+                    if ((data.TaiLieu[i].DoMat != "1")) {
+                        HoSoMat++;
+                        datatable.push([HoSoMat, data.TaiLieu[i].SoKyHieuVanBan, data.TaiLieu[i].NgayThang, data.TaiLieu[i].TacGia, data.TaiLieu[i].TrichYeuNoiDung, data.TaiLieu[i].SoTrang, "7"]);
+
+                    }
                 }
             }
+            $('.table-minhpt').dataTable().fnDestroy();
+            $('.table-minhpt thead tr').remove();
+            $('.table-minhpt thead').append('<tr><th class="col-md-1 text-center">STT</th><th class="col-md-2 text-center">Số, ký hiệu văn bản</th><th class="col-md-2 text-center">Ngày, tháng văn bản</th><th class="col-md-2 text-center">Tác giả văn bản</th><th class="col-md-3 text-center">Trích yếu nội dung văn bản</th><th class="col-md-1 text-center">Tờ số</th><th class="col-md-1 text-center">Số trang (A4)</th></tr>');
+            $('.table-minhpt').dataTable({
+
+                data: datatable,
+                retrieve: datatable
+            });
+            $("#dataTables-example_filter").css("float","right");
+            $("#dataTables-example_paginate").css("float","right");
         }
     });
 }
