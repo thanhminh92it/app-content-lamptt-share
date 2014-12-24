@@ -31,7 +31,7 @@ function displayData(TenPhong) {
             else {
                 $("#SoVBToiMat").html("Không có văn bản nào");
             }
-            if (data.Phong.mat3 > 0) $("#SoVBTuyetMat").html(data.Phong.mat4 + "&nbsp;văn bản");
+            if (data.Phong.mat4 > 0) $("#SoVBTuyetMat").html(data.Phong.mat4 + "&nbsp;văn bản");
             else {
                 $("#SoVBTuyetMat").html("Không có văn bản nào");
             }
@@ -51,12 +51,12 @@ function displayData(TenPhong) {
             for (var i = 0; i < data.TaiLieu.length; i++) {
                 if ((data.TaiLieu[i].DoMat == "2")) {
                     HoSoMat++;
-                    datatable.push([HoSoMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,"7"]);
+                    datatable.push([HoSoMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,data.TaiLieu[i].GhiChu]);
 
                 }
                 else if ((data.TaiLieu[i].DoMat == "3") || (data.TaiLieu[i].DoMat == "4")) {
                     HoSoToiTuyetMat++;
-                    datatable1.push([HoSoToiTuyetMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,"7"]);
+                    datatable1.push([HoSoToiTuyetMat,data.TaiLieu[i].SoKyHieuVanBan,data.TaiLieu[i].NgayThang,data.TaiLieu[i].TacGia,data.TaiLieu[i].TrichYeuNoiDung,data.TaiLieu[i].SoTrang,data.TaiLieu[i].GhiChu]);
                 }
             }
 
