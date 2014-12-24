@@ -92,7 +92,7 @@
 		<flags>
 			<!-- Developer debugging setting to turn on DEBUG mode for client scripts 
 				in the browser -->
-			<client-debug>false</client-debug>
+			<client-debug>true</client-debug>
 			<!-- LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, 
 				Ctrl, Shift, Shift). This flag automatically activates logging on page load. -->
 			<client-debug-autologging>false</client-debug-autologging>
@@ -143,7 +143,7 @@
          </dependencies>
       </header>
 	</config>
-	<!--<config evaluator="string-compare" condition="WebFramework">
+	<config evaluator="string-compare" condition="WebFramework">
 		<web-framework>
 			&lt;!&ndash; SpringSurf Autowire Runtime Settings &ndash;&gt;
 			&lt;!&ndash; Developers can set mode to 'development' to disable; SpringSurf caches,
@@ -159,7 +159,7 @@
 				<enable-auto-deploy-modules>true</enable-auto-deploy-modules>
 			</module-deployment>
 		</web-framework>
-	</config>-->
+	</config>
 	
 	<config evaluator="string-compare" condition="AdvancedSearch">
 		<advanced-search>
