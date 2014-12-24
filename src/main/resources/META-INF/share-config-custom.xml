@@ -496,23 +496,15 @@
 		<forms>
 			<form>
 				<field-visibility>
-					<show id="la:fo1p1" />
-					<show id="la:numberofpage" />
-					<show id="la:fo1p2" />
-					<show id="la:fo1p3" />
-					<show id="la:fo1p4" />
-					<show id="la:fo1p5" />
-					<show id="la:fo1p6" />
-					<show id="la:fo1p7" />
-					<show id="la:fo1p8" />
-
-					<show id="la:fo1p11" />
-					<show id="la:fo1p12" />
-
-					<show id="la:fo1p36" />
-					<show id="la:fo1p37" />
-
-					<show id="la:fo1p41" />
+					<show id="la:fo1p1" /><!--Mã cơ quan-->
+					<show id="la:fo1p2" /><!--Mục lục số-->
+					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
+					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
+					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
+					<show id="la:fo1p6"/><!--ToSo-->
+					<show id="la:fo1p7" /><!--GhiChu-->
+					<show id="la:fo1p36"/><!--NgayBatDau-->
+					<show id="la:fo1p37" /><!--NgayKetThuc-->
 
 				</field-visibility>
 			</form>
@@ -524,6 +516,10 @@
 					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
+					<show id="la:fo1p6" /><!--ToSo-->
+					<show id="la:fo1p7" /><!--GhiChu-->
+					<show id="la:fo1p36" /><!--NgayBatDau-->
+					<show id="la:fo1p37" /><!--NgayKetThuc-->
 				</field-visibility>
 			</form>
 			<!-- Document Library Inline Edit form -->
@@ -534,6 +530,10 @@
 					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
+					<show id="la:fo1p6" /><!--ToSo-->
+					<show id="la:fo1p7" /><!--GhiChu-->
+					<show id="la:fo1p36" /><!--NgayBatDau-->
+					<show id="la:fo1p37" /><!--NgayKetThuc-->
 				</field-visibility>
 			</form>
 		</forms>
@@ -547,6 +547,10 @@
 					<show id="la:fo1p3" force="true" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" force="true" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" force="true" /><!--Ky hieu thong tin-->
+					<show id="la:fo1p6" force="true" /><!--ToSo-->
+					<show id="la:fo1p7" force="true" /><!--GhiChu-->
+					<show id="la:fo1p36" force="true" /><!--NgayBatDau-->
+					<show id="la:fo1p37" force="true" /><!--NgayKetThuc-->
 				</field-visibility>
 				<appearance>
 					<field id="la:fo1p1" >
