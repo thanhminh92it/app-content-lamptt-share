@@ -48,7 +48,7 @@ function displayData()
                 for (var i = 0; i < data.TaiLieu.length; i++) {
                     if ((data.TaiLieu[i].DoMat == "1")) {
                         HoSoMat++;
-                        datatable.push([HoSoMat, data.TaiLieu[i].SoKyHieuVanBan, data.TaiLieu[i].NgayThang, data.TaiLieu[i].TacGia, data.TaiLieu[i].TrichYeuNoiDung, data.TaiLieu[i].ToSo, data.TaiLieu[i].DoMat,data.TaiLieu[i].GhiChu]);
+                        datatable.push([HoSoMat, data.TaiLieu[i].SoKyHieuVanBan, data.TaiLieu[i].NgayThang, data.TaiLieu[i].TacGia, data.TaiLieu[i].TrichYeuNoiDung, data.TaiLieu[i].SoTrang, data.TaiLieu[i].DoMat,data.TaiLieu[i].GhiChu]);
                     }
                 }
             }
