@@ -46,18 +46,25 @@ function displayData()
             var HoSoMat = 0;
             if (data.TaiLieu.length > 0) {
                 for (var i = 0; i < data.TaiLieu.length; i++) {
-                    if ((data.TaiLieu[i].DoMat != "1")) {
+                    if ((data.TaiLieu[i].DoMat == "1")) {
                         HoSoMat++;
-                        datatable.push([HoSoMat, data.TaiLieu[i].SoKyHieuVanBan, data.TaiLieu[i].NgayThang, data.TaiLieu[i].TacGia, data.TaiLieu[i].TrichYeuNoiDung, data.TaiLieu[i].SoTrang, "7"]);
-
+                        datatable.push([HoSoMat, data.TaiLieu[i].SoKyHieuVanBan, data.TaiLieu[i].NgayThang, data.TaiLieu[i].TacGia, data.TaiLieu[i].TrichYeuNoiDung, data.TaiLieu[i].ToSo, data.TaiLieu[i].DoMat,data.TaiLieu[i].GhiChu]);
                     }
                 }
             }
             $('.table-minhpt').dataTable().fnDestroy();
             $('.table-minhpt thead tr').remove();
-            $('.table-minhpt thead').append('<tr><th class="col-md-1 text-center">STT</th><th class="col-md-2 text-center">Số, ký hiệu văn bản</th><th class="col-md-2 text-center">Ngày, tháng văn bản</th><th class="col-md-2 text-center">Tác giả văn bản</th><th class="col-md-3 text-center">Trích yếu nội dung văn bản</th><th class="col-md-1 text-center">Tờ số</th><th class="col-md-1 text-center">Số trang (A4)</th></tr>');
+            $('.table-minhpt thead').append('<tr>' + 
+								'<th class="col-md-1 text-center">STT</th>' + 
+								'<th class="col-md-1 text-center">Số, ký hiệu văn bản</th>' + 
+								'<th class="col-md-2 text-center">Ngày, tháng văn bản</th>' + 
+								'<th class="col-md-2 text-center">Tác giả văn bản</th>' + 
+								'<th class="col-md-3 text-center">Trích yếu nội dung văn bản</th>' + 
+								'<th class="col-md-1 text-center">Tờ số</th>' + 
+								'<th class="col-md-1 text-center">Độ mật</th>' + 
+								'<th class="col-md-1 text-center">Ghi chú</th>' + 
+							'</tr>');
             $('.table-minhpt').dataTable({
-
                 data: datatable,
                 retrieve: datatable
             });

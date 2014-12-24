@@ -2,7 +2,6 @@
    <#-- CSS Dependencies -->
    <#include "../form/form.css.ftl"/>
    <@link href="${url.context}/res/components/QuangBinh/bootstrap/css/bootstrap.min.css" group="search"/>
-   <@link href="${url.context}/res/components/QuangBinh/Style/report/DungChung.css" group="search"/>
 </@>
 
 <@markup id="js">
@@ -51,16 +50,16 @@
 		        <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover table-minhpt" id="dataTables-example" style="margin-top:20px">
 		                <thead>
-		                <tr>
-		                    <th class="col-md-1 text-center">STT</th>
-		                    <th class="col-md-1 text-center">Số, ký hiệu văn bản</th>
-		                    <th class="col-md-2 text-center">Ngày, tháng văn bản</th>
-		                    <th class="col-md-2 text-center">Tác giả văn bản</th>
-		                    <th class="col-md-3 text-center">Trích yếu nội dung văn bản</th>
-		                    <th class="col-md-1 text-center">Tờ số</th>
-		                    <th class="col-md-1 text-center">Độ mật</th>
-		                    <th class="col-md-1 text-center">Ghi chú</th>
-		                </tr>
+							<tr>
+								<th class="col-md-1 text-center">STT</th>
+								<th class="col-md-1 text-center">Số, ký hiệu văn bản</th>
+								<th class="col-md-2 text-center">Ngày, tháng văn bản</th>
+								<th class="col-md-2 text-center">Tác giả văn bản</th>
+								<th class="col-md-3 text-center">Trích yếu nội dung văn bản</th>
+								<th class="col-md-1 text-center">Tờ số</th>
+								<th class="col-md-1 text-center">Độ mật</th>
+								<th class="col-md-1 text-center">Ghi chú</th>
+							</tr>
 		                </thead>
 		                <tbody>
 		                </tbody>
