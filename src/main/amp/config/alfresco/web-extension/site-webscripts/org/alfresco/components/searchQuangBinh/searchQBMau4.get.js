@@ -8,8 +8,8 @@ function main() {
         var data = eval('(' + result + ')');
         model.data = data;
         var key, count = 0;
-        for (key in data.items) {
-            if (data.items.hasOwnProperty(key)) {
+        for (key in data.ListUser) {
+            if (data.ListUser.hasOwnProperty(key)) {
                 count++;
             }
         }
