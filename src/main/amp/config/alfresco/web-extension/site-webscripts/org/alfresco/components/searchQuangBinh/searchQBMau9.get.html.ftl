@@ -75,3 +75,4 @@
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/report/9.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/jquery.dataTables.js"></script>
 <script type="text/javascript" src="${url.context}/res/components/QuangBinh/Scripts/plugins/dataTables/dataTables.bootstrap.js"></script>
+

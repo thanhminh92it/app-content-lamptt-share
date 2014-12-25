@@ -13,41 +13,21 @@ function Showdata(name){
         var dem=0;
         var datatable=[];
         if(data.Items.length>0) {
-            /*$('.minhlv').append('<tbody>');*/
-            for (var item in data.Items) {
+            for (var i=0; i<data.Items.length;i++) {
                 dem++;
-                datatable.push([dem,data.Items[item].SoKyHieuVanBan,data.Items[item].NgayThangVanBan,data.Items[item].TacGia,data.Items[item].TrichYeuNoiDung,data.Items[item].SoTrang,data.Items[item].GhiChu,"7"]);
-                /* $(".minhlv").append(*//*'<tr>' +
-                 '<td class="col-md-1 text-center" id="TT">' + dem + '</td>' +
-                 '<td class="col-md-1 text-center" id="KH">' + data.Items[item].SoKyHieuVanBan + '</td>' +
-                 '<td class="col-md-1 text-center" id="Ngay">' + data.Items[item].NgayThangVanBan + '</td>' +
-                 '<td class="col-md-3 text-center" id="TG">' + data.Items[item].TacGia + '</td>' +
-                 '<td class="col-md-3 text-center" id="VB">' + data.Items[item].TrichYeuNoiDung + '</td>' +
-                 '<td class="col-md-1 text-center" id="TS">' + data.Items[item].SoTrang + '</td>' +
-                 '<td class="col-md-2 text-center" id="DC">' + data.Items[item].GhiChu + '</td>' +
-                 '</tr>');*/
-            }/*$('.minhlv').append('</tbody>');*/
+                datatable.push([dem,data.Items[i].SoKyHieuVanBan,data.Items[i].NgayThangVanBan,data.Items[i].TacGia,data.Items[i].TrichYeuNoiDung,data.Items[i].SoTrang,data.Items[i].GhiChu]);
+            }
         }
-        /* else{
-         $(".minhlv").empty();
-         }*/
-        if( $.fn.dataTable.isDataTable( '#minhlv' ) ){
-            table = $('#minhlv').dataTable();
-            table.destroy();
-            table = $('#minhlv').dataTable({
-                paging :false,
-                searching: false,
-                retrieve:true
-            });
 
-        }
-        else{
-            $('#minhlv').dataTable({
-
-                data: datatable
-
-            });
-        }
+        $('.minhlv').dataTable().fnDestroy();
+        $('.minhlv thead tr').remove();
+        $('.minhlv thead').append('<tr><th class="col-md-1 text-center">STT</th><th class="col-md-2 text-center">Số, ký hiệu văn bản</th><th class="col-md-2 text-center">Ngày, tháng văn bản</th><th class="col-md-2 text-center">Tác giả văn bản</th><th class="col-md-3 text-center">Trích yếu nội dung văn bản</th><th class="col-md-1 text-center">Tờ số</th><th class="col-md-1 text-center">Ghi chú</th></tr>');
+        $('.minhlv').dataTable({
+            data: datatable,
+            retrieve: datatable
+        });
+        $("#dataTables-example_filter").css("float","right");
+        $("#dataTables-example_paginate").css("float","right");
     });
 }
 
