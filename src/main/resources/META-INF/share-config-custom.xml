@@ -1,166 +1,8 @@
 <alfresco-config>
-	<!-- Khi cong ty -->
-
-	<config evaluator="string-compare" condition="Remote">
-      <remote>
-         <endpoint>
-            <id>alfresco-noauth</id>
-            <name>Alfresco - unauthenticated access</name>
-            <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
-            <connector-id>alfresco</connector-id>
-            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
-            <identity>none</identity>
-         </endpoint>
-
-         <endpoint>
-            <id>alfresco</id>
-            <name>Alfresco - user access</name>
-            <description>Access to Alfresco Repository WebScripts that require user authentication</description>
-            <connector-id>alfresco</connector-id>
-            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
-            <identity>user</identity>
-         </endpoint>
-
-         <endpoint>
-            <id>alfresco-feed</id>
-            <name>Alfresco Feed</name>
-            <description>Alfresco Feed - supports basic HTTP authentication via the EndPointProxyServlet</description>
-            <connector-id>http</connector-id>
-            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
-            <basic-auth>true</basic-auth>
-            <identity>user</identity>
-         </endpoint>
-         
-         <endpoint>
-            <id>activiti-admin</id>
-            <name>Activiti Admin UI - user access</name>
-            <description>Access to Activiti Admin UI, that requires user authentication</description>
-            <connector-id>activiti-admin-connector</connector-id>
-            <endpoint-url>http://localhost:8080/alfresco/activiti-admin</endpoint-url>
-            <identity>user</identity>
-         </endpoint>
-      </remote>
-   </config>
-  
-   <!-- Khi o nha -->
-   
-   <!-- <config evaluator="string-compare" condition="Remote">
-      <remote>
-         <endpoint>
-            <id>alfresco-noauth</id>
-            <name>Alfresco - unauthenticated access</name>
-            <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
-            <connector-id>alfresco</connector-id>
-            <endpoint-url>http://119.15.168.134:9999/alfresco/s</endpoint-url>
-            <identity>none</identity>
-         </endpoint>
-
-         <endpoint>
-            <id>alfresco</id>
-            <name>Alfresco - user access</name>
-            <description>Access to Alfresco Repository WebScripts that require user authentication</description>
-            <connector-id>alfresco</connector-id>
-            <endpoint-url>http://119.15.168.134:9999/alfresco/s</endpoint-url>
-            <identity>user</identity>
-         </endpoint>
-
-         <endpoint>
-            <id>alfresco-feed</id>
-            <name>Alfresco Feed</name>
-            <description>Alfresco Feed - supports basic HTTP authentication via the EndPointProxyServlet</description>
-            <connector-id>http</connector-id>
-            <endpoint-url>http://119.15.168.134:9999/alfresco/s</endpoint-url>
-            <basic-auth>true</basic-auth>
-            <identity>user</identity>
-         </endpoint>
-         
-         <endpoint>
-            <id>activiti-admin</id>
-            <name>Activiti Admin UI - user access</name>
-            <description>Access to Activiti Admin UI, that requires user authentication</description>
-            <connector-id>activiti-admin-connector</connector-id>
-            <endpoint-url>http://119.15.168.134:9999/alfresco/activiti-admin</endpoint-url>
-            <identity>user</identity>
-         </endpoint>
-      </remote>
-   </config> -->
-	
-	
-	
-	<!-- Global config section -->
-	<config replace="true">
-		<flags>
-			<!-- Developer debugging setting to turn on DEBUG mode for client scripts 
-				in the browser -->
-			<client-debug>true</client-debug>
-			<!-- LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, 
-				Ctrl, Shift, Shift). This flag automatically activates logging on page load. -->
-			<client-debug-autologging>false</client-debug-autologging>
-		</flags>
-		<header>
-         <app-items>
-            <!-- defaults: icon="{id}.png" label="header.{id}.label" description="header.{id}.description" -->
-            <item type="link" id="my-dashboard">{userdashboardpage}</item>
-            <item type="js" id="sites">Alfresco.module.Sites</item>
-            <item type="link" id="people">/people-finder</item>
-            <item type="link" id="repository" condition="conditionRepositoryRootNode">/repository</item>
-            <item type="link" id="report" >/reportQuangBinh</item>
-            <item type="container" id="more">
-               <container-group id="my">
-                  <item type="link" id="my-tasks">/my-tasks#filter=workflows|active</item>
-                  <item type="link" id="my-workflows">/my-workflows#filter=workflows|active</item>
-                  <item type="link" id="my-content">/user/user-content</item>
-                  <item type="link" id="my-sites">/user/user-sites</item>
-                  <item type="link" id="my-profile">{userprofilepage}</item>
-               </container-group>
-               <container-group id="tools" permission="admin">
-                  <item type="link" id="application">/console/admin-console/application</item>
-                  <item type="link" id="groups">/console/admin-console/groups</item>
-                  <item type="link" id="replication-jobs" condition="!conditionEditionTeam">/console/admin-console/replication-jobs</item>
-                  <item type="link" id="repository">/console/admin-console/repository</item>
-                  <item type="link" id="trashcan">/console/admin-console/trashcan</item>
-                  <item type="link" id="users">/console/admin-console/users</item>
-                  <item type="link" id="more">/console/admin-console/</item>
-               </container-group>
-            </item>
-         </app-items>
-         <user-items>
-            <item type="container" id="user" icon="" description="">
-               <container-group id="usermenu" label="">
-                  <item type="user" id="status">{userprofilepage}</item>
-                  <item type="link" id="my-profile">{userprofilepage}</item>
-                  <item type="link" id="change-password" condition="user.capabilities.isMutable">/user/change-password</item>
-                  <item type="external-link" id="help">{share-help}</item>
-                  <item type="link" id="logout" condition="!context.externalAuthentication">/dologout</item>
-               </container-group>
-            </item>
-         </user-items>
-         <dependencies>
-            <css src="/modules/create-site.css" />
-            <css src="/modules/header/sites.css" />
-            <js src="/modules/create-site.js" />
-            <js src="/modules/header/sites.js" />
-         </dependencies>
-      </header>
-	</config>
-
-	<config evaluator="string-compare" condition="WebFramework">
-		<web-framework>
-			<autowire>
-				<mode>development</mode>
-			</autowire>
-			<module-deployment>
-				<mode>manual</mode>
-				<enable-auto-deploy-modules>true</enable-auto-deploy-modules>
-			</module-deployment>
-		</web-framework>
-	</config>
-	
 	<config evaluator="string-compare" condition="AdvancedSearch">
 		<advanced-search>
 			<forms>
 				<form labelId="type.la_t1" descriptionId="type.la_t1.description" >la:t1</form>
-
 				<form labelId="type.la_fo1" descriptionId="type.la_fo1.description" >la:fo1</form>
 			</forms>
 		</advanced-search>
@@ -169,7 +11,6 @@
 		<types>
 			<type name="cm:content">
 				<subtype name="la:t1" />
-
 			</type>
 			<type name="cm:folder">
 				<subtype name="la:fo1" />
@@ -183,6 +24,23 @@
 			<removeable>
 			</removeable>
 		</aspects>
+		<create-content>
+			<content id="entity1" label="type.la_fo1" type="pagelink"
+				index="170" icon="entity">
+				<param name="page">create-content?destination={nodeRef}&amp;itemId=la:fo1&amp;formId=create-entity&amp;isEntity=true
+				</param>
+			</content>
+			<content id="entity2" label="type.la_fo2" type="pagelink"
+				index="170" icon="entity">
+				<param name="page">create-content?destination={nodeRef}&amp;itemId=la:fo2&amp;formId=create-entity&amp;isEntity=true
+				</param>
+			</content>
+			<content id="entity3" label="type.la_fo3" type="pagelink"
+				index="170" icon="entity">
+				<param name="page">create-content?destination={nodeRef}&amp;itemId=la:fo3&amp;formId=create-entity&amp;isEntity=true
+				</param>
+			</content>
+		</create-content>
 	</config>
 
 
@@ -581,7 +439,7 @@
 	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
 	                       <control-param name="itemType">LoaiVanBan</control-param>
 	                   </control>
-					</field> 
+					</field>
 					<field id="ks:TacGia" label-id="ks_TacGia">
 	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
 	                       <control-param name="itemType">TacGia</control-param>
@@ -597,7 +455,9 @@
 			<form>
 				<field-visibility>
 					<show id="la:fo1p1" /><!--Mã cơ quan-->
-					<show id="la:fo1p2" /><!--Mục lục số-->
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
@@ -607,43 +467,136 @@
 					<show id="la:fo1p37" /><!--NgayKetThuc-->
 
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
 			</form>
 			<!-- Document Library pop-up Edit Metadata form -->
 			<form id="doclib-simple-metadata">
 				<field-visibility>
 					<show id="la:fo1p1" /><!--Mã cơ quan-->
-					<show id="la:fo1p2" /><!--Mục lục số-->
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
-					<show id="la:fo1p6" /><!--ToSo-->
+					<show id="la:fo1p6"/><!--ToSo-->
 					<show id="la:fo1p7" /><!--GhiChu-->
-					<show id="la:fo1p36" /><!--NgayBatDau-->
+					<show id="la:fo1p36"/><!--NgayBatDau-->
 					<show id="la:fo1p37" /><!--NgayKetThuc-->
+
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
 			</form>
 			<!-- Document Library Inline Edit form -->
 			<form id="doclib-inline-edit">
 				<field-visibility>
 					<show id="la:fo1p1" /><!--Mã cơ quan-->
-					<show id="la:fo1p2" /><!--Mục lục số-->
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:fo1p3" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" /><!--Ky hieu thong tin-->
-					<show id="la:fo1p6" /><!--ToSo-->
+					<show id="la:fo1p6"/><!--ToSo-->
 					<show id="la:fo1p7" /><!--GhiChu-->
-					<show id="la:fo1p36" /><!--NgayBatDau-->
+					<show id="la:fo1p36"/><!--NgayBatDau-->
 					<show id="la:fo1p37" /><!--NgayKetThuc-->
+
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="model-type" condition="la:fo3">
+		<forms>
+			<!-- Document Library Common form -->
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<config evaluator="model-type" condition="la:fo2">
+		<forms>
+			<!-- Document Library Common form -->
+			<form>
+				<field-visibility>
+					<show id="cm:name" />
+					<show id="cm:title" force="true" />
+					<show id="cm:description" force="true" />
+				</field-visibility>
+				<appearance>
+					<field id="cm:title">
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+				</appearance>
 			</form>
 		</forms>
 	</config>
 	<config evaluator="model-type" condition="la:fo1">
 		<forms>
-			<form id="search">
+			<!-- Document Library Common form -->
+			<form>
 				<field-visibility>
+					<show id="cm:name" />
 					<show id="la:fo1p1" force="true" /><!--Mã cơ quan-->
-					<show id="la:fo1p2" force="true" /><!--Mục lục số-->
+					<show id="ks:MucLucSo" force="true" /><!--Mục lục số-->
 					<show id="la:fo1p3" force="true" /><!--Chế độ sở dụng-->
 					<show id="la:fo1p4" force="true" /><!-- Tinh trang vat ly-->
 					<show id="la:fo1p5" force="true" /><!--Ky hieu thong tin-->
@@ -847,6 +800,247 @@
 					</field>
 					<field id="la:fo1p65" >
 						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field>
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>
+				</appearance>
+			</form>
+			
+			<form id="search">
+				<field-visibility>
+					<show id="la:fo1p1" force="true" /><!--Mã cơ quan-->
+					<show id="ks:MucLucSo" force="true" /><!--Mục lục số-->
+					<show id="la:fo1p3" force="true" /><!--Chế độ sở dụng-->
+					<show id="la:fo1p4" force="true" /><!-- Tinh trang vat ly-->
+					<show id="la:fo1p5" force="true" /><!--Ky hieu thong tin-->
+					<show id="la:fo1p6" force="true" /><!--ToSo-->
+					<show id="la:fo1p7" force="true" /><!--GhiChu-->
+					<show id="la:fo1p36" force="true" /><!--NgayBatDau-->
+					<show id="la:fo1p37" force="true" /><!--NgayKetThuc-->
+				</field-visibility>
+				<appearance>
+					<field id="la:fo1p1" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p2" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p3" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p4" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p5" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p6" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p7" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p8" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p9" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p10" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p11" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p12" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p13" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p14" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p15" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p16" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p17" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p18" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p19" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p20" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p21" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p22" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p23" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p24" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p25" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p26" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p27" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p28" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p29" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p30" >
+						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
+					</field>
+					<field id="la:fo1p31" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:fo1p32" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:fo1p33" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:fo1p34" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:fo1p35" >
+						<control template="/org/alfresco/components/form/controls/checkbox.ftl" />
+					</field>
+					<field id="la:fo1p36" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:fo1p37" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:fo1p38" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:fo1p39" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:fo1p40" >
+						<control template="/org/alfresco/components/form/controls/date.ftl" />
+					</field>
+					<field id="la:fo1p41" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p42" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p43" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p44" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p45" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p46" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p47" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p48" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p49" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p50" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p51" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p52" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p53" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p54" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p55" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p56" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p57" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p58" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p59" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p60" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p61" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p62" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p63" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p64" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="la:fo1p65" >
+						<control template="/org/alfresco/components/form/controls/number.ftl" />
+					</field>
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field>
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
 					</field>
 				</appearance>
 			</form>
