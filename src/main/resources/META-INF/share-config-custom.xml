@@ -8,7 +8,7 @@
             <name>Alfresco - unauthenticated access</name>
             <description>Access to Alfresco Repository WebScripts that do not require authentication</description>
             <connector-id>alfresco</connector-id>
-            <endpoint-url>http://192.168.1.22:8080/alfresco/s</endpoint-url>
+            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
             <identity>none</identity>
          </endpoint>
 
@@ -17,7 +17,7 @@
             <name>Alfresco - user access</name>
             <description>Access to Alfresco Repository WebScripts that require user authentication</description>
             <connector-id>alfresco</connector-id>
-            <endpoint-url>http://192.168.1.22:8080/alfresco/s</endpoint-url>
+            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
             <identity>user</identity>
          </endpoint>
 
@@ -26,7 +26,7 @@
             <name>Alfresco Feed</name>
             <description>Alfresco Feed - supports basic HTTP authentication via the EndPointProxyServlet</description>
             <connector-id>http</connector-id>
-            <endpoint-url>http://192.168.1.22:8080/alfresco/s</endpoint-url>
+            <endpoint-url>http://localhost:8080/alfresco/s</endpoint-url>
             <basic-auth>true</basic-auth>
             <identity>user</identity>
          </endpoint>
@@ -36,7 +36,7 @@
             <name>Activiti Admin UI - user access</name>
             <description>Access to Activiti Admin UI, that requires user authentication</description>
             <connector-id>activiti-admin-connector</connector-id>
-            <endpoint-url>http://192.168.1.22:8080/alfresco/activiti-admin</endpoint-url>
+            <endpoint-url>http://localhost:8080/alfresco/activiti-admin</endpoint-url>
             <identity>user</identity>
          </endpoint>
       </remote>
@@ -194,12 +194,20 @@
 					<show id="la:numberofpage" /><!--Số trang tự nhận-->
 					<show id="la:t1p41" /><!--Số trang nhập-->
 					<show id="la:t1p2" /><!--Mã phông-->
-					<show id="la:t1p3" /><!--Mục lục số-->
+					
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:t1p4" /><!--Hộp số-->
 					<show id="la:t1p5" /><!--Hồ sơ số-->
 					<show id="la:t1p8" /><!--Số ký hiệu-->
-					<show id="la:t1p7" /><!--Tên loại-->
-					<show id="la:t1p10" /><!--Tác giả-->
+					
+					<!-- <show id="la:t1p7" />Tên loại -->
+					<show id="ks:LoaiVanBan" />
+					
+					<!-- <show id="la:t1p10" />Tác giả -->
+					<show id="ks:TacGia" />
+					
 					<show id="la:t1p36" /><!--Ngày tháng văn bản-->
 					<show id="la:t1p11" /><!--Trích yếu-->
 					<show id="la:t1p14" /><!--Số lượng tờ-->
@@ -211,6 +219,23 @@
 					<show id="la:t1p6" /><!--Tờ số-->
 					<show id="la:t1p12" /><!--Kyhieuthongtin-->
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
 			</form>
 			<!-- Document Library pop-up Edit Metadata form -->
 			<form id="doclib-simple-metadata">
@@ -219,12 +244,20 @@
 					<show id="la:numberofpage" /><!--Số trang tự nhận-->
 					<show id="la:t1p41" /><!--Số trang nhập-->
 					<show id="la:t1p2" /><!--Mã phông-->
-					<show id="la:t1p3" /><!--Mục lục số-->
+					
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:t1p4" /><!--Hộp số-->
 					<show id="la:t1p5" /><!--Hồ sơ số-->
 					<show id="la:t1p8" /><!--Số ký hiệu-->
-					<show id="la:t1p7" /><!--Tên loại-->
-					<show id="la:t1p10" /><!--Tác giả-->
+					
+					<!-- <show id="la:t1p7" />Tên loại -->
+					<show id="ks:LoaiVanBan" />
+					
+					<!-- <show id="la:t1p10" />Tác giả -->
+					<show id="ks:TacGia" />
+					
 					<show id="la:t1p36" /><!--Ngày tháng văn bản-->
 					<show id="la:t1p11" /><!--Trích yếu-->
 					<show id="la:t1p14" /><!--Số lượng tờ-->
@@ -236,6 +269,23 @@
 					<show id="la:t1p6" /><!--Tờ số-->
 					<show id="la:t1p12" /><!--Kyhieuthongtin-->
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
 			</form>
 			<!-- Document Library Inline Edit form -->
 			<form id="doclib-inline-edit">
@@ -244,12 +294,20 @@
 					<show id="la:numberofpage" /><!--Số trang tự nhận-->
 					<show id="la:t1p41" /><!--Số trang nhập-->
 					<show id="la:t1p2" /><!--Mã phông-->
-					<show id="la:t1p3" /><!--Mục lục số-->
+					
+					<!-- <show id="la:t1p3" />Mục lục số -->
+					<show id="ks:MucLucSo" />
+					
 					<show id="la:t1p4" /><!--Hộp số-->
 					<show id="la:t1p5" /><!--Hồ sơ số-->
 					<show id="la:t1p8" /><!--Số ký hiệu-->
-					<show id="la:t1p7" /><!--Tên loại-->
-					<show id="la:t1p10" /><!--Tác giả-->
+					
+					<!-- <show id="la:t1p7" />Tên loại -->
+					<show id="ks:LoaiVanBan" />
+					
+					<!-- <show id="la:t1p10" />Tác giả -->
+					<show id="ks:TacGia" />
+					
 					<show id="la:t1p36" /><!--Ngày tháng văn bản-->
 					<show id="la:t1p11" /><!--Trích yếu-->
 					<show id="la:t1p14" /><!--Số lượng tờ-->
@@ -260,7 +318,25 @@
 					<show id="la:t1p18" /><!--Ghi chu-->
 					<show id="la:t1p6" /><!--Tờ số-->
 					<show id="la:t1p12" /><!--Kyhieuthongtin-->
+					
 				</field-visibility>
+				<appearance> 				    
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
+				</appearance>
 			</form>
 		</forms>
 	</config>
@@ -271,12 +347,20 @@
 					<show id="la:t1p1" force="true" /> <!--Mã cơ quản-->
 					<show id="la:t1p41" force="true" /><!--Số trang nhập-->
 					<show id="la:t1p2" force="true" /><!--Mã phông-->
-					<show id="la:t1p3" force="true" /><!--Mục lục số-->
+					
+					<!-- <show id="la:t1p3" force="true" />Mục lục số -->
+					<show id="ks:MucLucSo" force="true" />
+					
 					<show id="la:t1p4" force="true" /><!--Hộp số-->
 					<show id="la:t1p5" force="true" /><!--Hồ sơ số-->
 					<show id="la:t1p8" force="true" /><!--Số ký hiệu-->
-					<show id="la:t1p7" force="true" /><!--Tên loại-->
-					<show id="la:t1p10" force="true" /><!--Tác giả-->
+					
+					<!-- <show id="la:t1p7" force="true" />Tên loại -->
+					<show id="ks:LoaiVanBan" force="true" />
+					
+					<!-- <show id="la:t1p10" force="true" />Tác giả -->
+					<show id="ks:TacGia" force="true" />
+					
 					<show id="la:t1p36" force="true" /><!--Ngày tháng văn bản-->
 					<show id="la:t1p11" force="true" /><!--Trích yếu-->
 					<show id="la:t1p14" force="true" /><!--Số lượng tờ-->
@@ -289,6 +373,7 @@
 					<show id="la:t1p12" force="true" /><!--Kyhieuthongtin-->
 				</field-visibility>
 				<appearance>
+					
 					<field id="la:t1p1" >
 						<control template="/org/alfresco/components/form/controls/textfield.ftl" />
 					</field>
@@ -487,6 +572,21 @@
 					<field id="la:numberofpage" >
 						<control template="/org/alfresco/components/form/controls/number.ftl" />
 					</field>
+					<field id="ks:MucLucSo" label-id="ks_MucLucSo">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">MucLucSo</control-param>
+	                   </control>
+					</field>
+					<field id="ks:LoaiVanBan" label-id="ks_LoaiVanBan">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">LoaiVanBan</control-param>
+	                   </control>
+					</field> 
+					<field id="ks:TacGia" label-id="ks_TacGia">
+	                   <control template="/org/alfresco/components/form/controls/datalistSelectone.ftl">
+	                       <control-param name="itemType">TacGia</control-param>
+	                   </control>
+					</field>   
 				</appearance>
 			</form>
 		</forms>
@@ -752,5 +852,39 @@
 			</form>
 		</forms>
 	</config>
+	<config evaluator="model-type" condition="dlm:optionList">
+      <forms>
+         <form>
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+             </field-visibility>
+            <create-form template="/org/alfresco/components/data-lists/forms/dataitem.ftl" />
+            <appearance>
+            </appearance>
+         </form>
+
+         <form id="datagrid">
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+            </field-visibility>
+         </form>
+      </forms>
+   </config>
+
+   <config evaluator="node-type" condition="dlm:optionList">
+      <forms>
+         <form>
+            <field-visibility>
+               <show id="dlm:code" />
+               <show id="dlm:value" />
+            </field-visibility>
+            <edit-form template="/org/alfresco/components/data-lists/forms/dataitem.ftl" />
+            <appearance>
+            </appearance>
+         </form>
+      </forms>
+   </config>
 
 </alfresco-config>

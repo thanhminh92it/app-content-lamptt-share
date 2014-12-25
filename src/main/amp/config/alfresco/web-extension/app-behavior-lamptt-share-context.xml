@@ -7,6 +7,8 @@
       <property name="resourceBundles">
          <list>
          	<value>alfresco.module.${project.artifactId}.messages.lamptt</value>
+         	<value>alfresco.module.${project.artifactId}.messages.datalist-model</value>
+         	<value>alfresco.module.${project.artifactId}.messages.custom-model</value>
          </list>
       </property>
    </bean>
