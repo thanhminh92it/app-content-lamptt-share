@@ -20,6 +20,9 @@ function displayData()
             {
                 metgia = "" + data.Phong.fo2 / 8;
                 hopso = "" + data.Phong.fo2;
+            }
+            if(data.Phong.fo3 != -1)
+            {
                 hoso = "" + data.Phong.fo3;
             }
             $(".metgia").html(metgia);
@@ -54,16 +57,16 @@ function displayData()
             }
             $('.table-minhpt').dataTable().fnDestroy();
             $('.table-minhpt thead tr').remove();
-            $('.table-minhpt thead').append('<tr>' + 
-								'<th class="col-md-1 text-center">STT</th>' + 
-								'<th class="col-md-1 text-center">Số, ký hiệu văn bản</th>' + 
-								'<th class="col-md-2 text-center">Ngày, tháng văn bản</th>' + 
-								'<th class="col-md-2 text-center">Tác giả văn bản</th>' + 
-								'<th class="col-md-3 text-center">Trích yếu nội dung văn bản</th>' + 
-								'<th class="col-md-1 text-center">Tờ số</th>' + 
-								'<th class="col-md-1 text-center">Độ mật</th>' + 
-								'<th class="col-md-1 text-center">Ghi chú</th>' + 
-							'</tr>');
+            $('.table-minhpt thead').append('<tr>' +
+            '<th class="col-md-1 text-center">STT</th>' +
+            '<th class="col-md-1 text-center">Số, ký hiệu văn bản</th>' +
+            '<th class="col-md-2 text-center">Ngày, tháng văn bản</th>' +
+            '<th class="col-md-2 text-center">Tác giả văn bản</th>' +
+            '<th class="col-md-3 text-center">Trích yếu nội dung văn bản</th>' +
+            '<th class="col-md-1 text-center">Tờ số</th>' +
+            '<th class="col-md-1 text-center">Độ mật</th>' +
+            '<th class="col-md-1 text-center">Ghi chú</th>' +
+            '</tr>');
             $('.table-minhpt').dataTable({
                 data: datatable,
                 retrieve: datatable
@@ -156,9 +159,10 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
             for(var item in data.TaiLieu)
             {
                 if(data.TaiLieu[item].DoMat == "1") {
+                    dem++;
                     content += "<tr>" +
                     "<td>" +
-                    "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 1%'>" + dem++ + "</p>" +
+                    "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 1%'>" + dem + "</p>" +
                     "</td>" +
                     "<td>" +
                     "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 30%'>" + data.TaiLieu[item].SoKyHieuVanBan + "</p>" +
@@ -170,7 +174,7 @@ if (typeof jQuery !== "undefined" && typeof saveAs !== "undefined") {
                     "<td>" +
                     "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 30%'>" + data.TaiLieu[item].TrichYeuNoiDung + "</p></td>" +
                     "<td>" +
-                    "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 1%'>" + data.TaiLieu[item].SoTrang + "</p></td>" +
+                    "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 1%'>" + data.TaiLieu[item].ToSo + "</p></td>" +
                     "<td>" +
                     "<p align=center style='margin-top:3.0pt;margin-right:0cm;margin-bottom:3.0pt;margin-left:0cm;text-align:center;width: 1%'>" + data.TaiLieu[item].DoMat + "</p></td>" +
                     "<td>" +

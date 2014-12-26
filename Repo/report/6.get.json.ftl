@@ -11,6 +11,8 @@
 	[
 		<#list data.items as child>
 		{	
+			"Ten": "${child.name}",
+			"TieuDe": "${child.title}",
 			"SoKyHieuVanBan":"<#if child.SoKyHieuVanBan??>${child.SoKyHieuVanBan}</#if>",
 			"NgayThang":"<#if child.NgayThang??>${child.NgayThang?string["dd/MM/yyyy"]}</#if>",
 			"TacGia":"<#if child.TacGia??>${child.TacGia}</#if>",

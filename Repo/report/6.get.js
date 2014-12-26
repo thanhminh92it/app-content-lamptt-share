@@ -1,7 +1,7 @@
 <import resource="classpath:/alfresco/extension/templates/webscripts/zalu/vn/report/lib/search.lib.js">
 function main()
 {
-	var Phong = search.luceneSearch("TYPE:\"cm:folder\" + @cm\\:name:\""+args.name+"\"");
+	var Phong = search.luceneSearch("TYPE:\"la:fo3\" + @cm\\:name:\""+args.name+"\"");
 	if(Phong == null || Phong.length == 0)
 	{
 		status.code = 404;
