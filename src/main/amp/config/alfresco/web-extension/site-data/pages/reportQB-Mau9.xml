@@ -4,7 +4,7 @@
    <title-id>page.advsearch.title</title-id>
    <description>Advanced Search view</description>
    <description-id>page.advsearch.description</description-id>
-   <template-instance>search</template-instance>
+   <template-instance>report</template-instance>
    <authentication>user</authentication>
    <components>
 
