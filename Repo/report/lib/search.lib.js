@@ -121,7 +121,7 @@ function getRepositoryItem(folderPath, node) {
 				path : folderPath.join("/"),
 				SoKyHieuVanBan: node.properties["la:t1p8"],
 				NgayThang: node.properties["la:t1p36"],
-				TacGia: node.properties["la:t1p10"],
+				TacGia: node.properties["ks:TacGia"],
 				TrichYeuNoiDung: node.properties["la:t1p11"],
 				ToSo: node.properties["la:t1p6"],
 				GhiChu: node.properties["la:t1p18"],

@@ -30,8 +30,11 @@ function main()
 					for(var j = 0; j < Nodec2s.length ; j++)
 					{
 						if(longdatefrom <= Nodec2s[j].properties["sla:c20"] && longdateto >= Nodec2s[j].properties["sla:c20"])
-						{
-							VanBanA4++;
+						{	
+							var sotrang = 0;
+							if(Nodec2s[j].properties["sla:c22"] != null)
+								sotrang = Nodec2s[j].properties["sla:c22"];
+							VanBanA4 += sotrang;
 							VanBanDuocNhapLieu++;
 						}
 					}

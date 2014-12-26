@@ -1,8 +1,8 @@
 {	
 	"Phong":
 	{
-		"fo2":<#if phong.properties["sla:fo2"]??>${phong.properties["sla:fo2"]}<#else>-1</#if>,
-		"fo3":<#if phong.properties["sla:fo3"]??>${phong.properties["sla:fo2"]}<#else>-1</#if>
+		"fo2":${phong.properties["sla:fo2"]!'-1'},
+		"fo3":${phong.properties["sla:fo1"]!'-1'}
 	},
 	"TaiLieu":
 	[
