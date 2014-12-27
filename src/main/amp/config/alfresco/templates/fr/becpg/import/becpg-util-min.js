@@ -1,0 +1,1 @@
+var BeCPGUtil={getDefaultReport:function getDefaultReport(b){var d=null;for(var c in b){var a=b[c];if(d==null){d=a}if(a.isSelected||a.isDefault){d=a;if(a.isSelected){break}}}return d}};

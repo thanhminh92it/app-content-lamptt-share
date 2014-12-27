@@ -1,0 +1,50 @@
+
+.datagrid .red {
+	color: red;
+}
+
+.datagrid-bar .onActionShowDetails,.datagrid .onActionShowDetails a {
+	background-image: url("../../components/images/show-details-16.png");
+}
+
+.datagrid-bar .onActionShowComments,.datagrid .onActionShowComments a {
+	background-image: url("../../components/images/comment-16.png");
+}
+
+.datagrid-bar .onActionManageAspects,.datagrid .onActionManageAspects a
+	{
+	background-image: url("../../components/images/aspect-16.png");
+}
+
+.datagrid-bar .onActionShowWused,.datagrid .onActionShowWused a {
+	background-image: url("../../components/images/wused-16.png");
+}
+
+.datagrid-bar  .onActionBulkEdit, .datagrid .onActionBulkEdit a {
+	background-image:  url("../../components/images/edit-inline-16.png");
+}
+
+.datagrid-bar  .onActionSelectColor, .datagrid .onActionSelectColor a {
+	background-image:  url("../../components/images/select-color-16.png");
+}
+
+.form-container  .bulk-edit label {
+    display: inline;
+}
+
+.datagrid span.document-version {
+	margin-left: .8em;
+	position: relative;
+	top: -2px;
+	visibility: hidden;
+	padding: 1px;
+}
+
+.datagrid .yui-dt-highlighted span.document-version {
+	visibility: visible;
+}
+
+.datagrid div.scoreList-screening {
+	height: 150px;
+	overflow: auto;
+}
