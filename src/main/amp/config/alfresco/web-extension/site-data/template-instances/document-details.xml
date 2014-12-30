@@ -280,11 +280,10 @@
          </sub-components>
       </component>
 
-	<!-- Currently, url of workflows component not match, so workflow will no show -->
       <!-- Document Workflows -->
       <component>
          <region-id>document-workflows</region-id>
-         <url>/components/document-details/document-workflowss</url>
+         <url>/components/document-details/document-workflows</url>
          <properties>
             <nodeRef>{nodeRef}</nodeRef>
          </properties>
@@ -299,11 +298,10 @@
          </properties>
       </component>
 
-	<!-- Currently, url of publishing component not match, so publishing will no show -->
       <!-- Document Publishing -->
       <component>
          <region-id>document-publishing</region-id>
-         <url>/components/document-details/document-publishings</url>
+         <url>/components/document-details/document-publishing</url>
          <properties>
             <nodeRef>{nodeRef}</nodeRef>
          </properties>
