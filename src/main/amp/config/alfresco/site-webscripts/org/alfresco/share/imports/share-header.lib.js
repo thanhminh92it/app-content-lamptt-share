@@ -1186,7 +1186,6 @@ function generateAppItems() {
 		  id: "HEADER_REPORT",
 		  label: "header.report.label",
 		  targetUrl: "reportQuangBinh",
-		  targetUrlType: "FULL_PATH",
 		  targetUrlLocation: "NEW"
 		}
 	  });
