@@ -75,6 +75,22 @@
       </remote>
    </config>
    
+   <!-- Document Library Actions config section -->
+	<config evaluator="string-compare" condition="DocLibActions">
+		<!--Action definitions-->
+		<actions>
+			<!-- Publish document -->
+			 <action id="document-publish" type="javascript" label="actions.document.publish">
+
+				<param name="function">onActionPublish</param>
+
+				<!--Evaluator to disable Pulish Document Action for all users.-->
+				<evaluator>evaluator.doclib.action.disableAction</evaluator>
+				<evaluator negate="true"> evaluator.doclib.action.isLocked</evaluator>
+			 </action>
+		</actions>
+	</config>
+   
 	<config evaluator="string-compare" condition="AdvancedSearch">
 		<advanced-search>
 			<forms>
