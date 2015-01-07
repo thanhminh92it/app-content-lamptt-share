@@ -19,7 +19,7 @@ function displayData(TenPhong) {
         if (data != undefined) {
             /*              soTrangScan = data.User.SoTrangA4;
              tongSoVB = data.User.SoVanBanNhapLieu;*/
-            if (data.Phong.fo2 > 0) $("#SoMet").html(data.Phong.fo2);
+            if (data.Phong.fo2 > 0) $("#SoMet").html(data.Phong.fo2/8);
             else {
                 $("#SoMet").html("Không có mét nào");
             }
